@@ -1,0 +1,26 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rohelised kogukonnaüritused Ida‑Virumaa koolides — MTÜ Noorteaeg</title>
+<script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="../assets/site.css">
+</head><body class="bg-gray-50 text-gray-900">
+<header class="border-b bg-white"><div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+<a href="../index.html#projects" class="text-blue-600">← Назад к проектам</a><a href="../index.html" class="font-semibold">MTÜ Noorteaeg</a></div></header>
+<main class="max-w-5xl mx-auto px-4 py-10">
+<h1 class="text-3xl font-bold">Rohelised kogukonnaüritused Ida‑Virumaa koolides</h1>
+<p class="mt-4 leading-relaxed">Серия выездных событий для школ региона: «эко‑лаборатория», мастер‑классы по апсайклингу, лекции о безопасности и первой помощи, настольные игры по устойчивости. Школы сами выбирают набор станций, а мы привозим тренеров и материалы.</p>
+<section class="mt-8"><h2 class="text-2xl font-semibold">Фотографии</h2>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4">
+<img src="../assets/photo5.jpg" class="rounded-lg img-card lb-gallery" alt=""><img src="../assets/photo1.jpg" class="rounded-lg img-card lb-gallery" alt=""><img src="../assets/photo7.jpg" class="rounded-lg img-card lb-gallery" alt="">
+</div></section></main>
+<div id="lightbox" class="lightbox-backdrop" aria-hidden="true"><span class="lightbox-close" id="lb-close">×</span>
+<span class="lightbox-nav lightbox-prev" id="lb-prev">‹</span><img class="lightbox-img" id="lb-img"><span class="lightbox-nav lightbox-next" id="lb-next">›</span></div>
+<script>
+const lb=document.getElementById('lightbox'), img=document.getElementById('lb-img'), prev=document.getElementById('lb-prev'), next=document.getElementById('lb-next');
+let list=[...document.querySelectorAll('img.lb-gallery')].map(i=>i.src), idx=0;
+function openL(src){ idx=list.indexOf(src); if(idx<0) idx=0; img.src=list[idx]; lb.classList.add('open'); }
+document.body.addEventListener('click',e=>{ if(e.target.matches('img.lb-gallery')) openL(e.target.src); if(e.target===lb) lb.classList.remove('open'); });
+prev.onclick=()=>{ idx=(idx-1+list.length)%list.length; img.src=list[idx]; };
+next.onclick=()=>{ idx=(idx+1)%list.length; img.src=list[idx]; };
+document.addEventListener('keydown',e=>{ if(!lb.classList.contains('open')) return; if(e.key==='Escape') lb.classList.remove('open'); if(e.key==='ArrowLeft') prev.onclick(); if(e.key==='ArrowRight') next.onclick(); });
+</script>
+</body></html>
