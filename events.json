@@ -1,0 +1,16 @@
+{
+  "upcoming": [
+    {
+      "date": "2025-10-12",
+      "title_ru": "Осенний семейный день в Нарва-Йыэсуу",
+      "title_et": "Sügisene perepäev Narva‑Jõesuus",
+      "poster": "assets/poster_narva_12oct.png"
+    },
+    {
+      "date": "2025-10-18",
+      "title_ru": "Осенний семейный день в Синимяэ",
+      "title_et": "Sügisene perepäev Sinimäel",
+      "poster": "assets/poster_sinimae_18oct.png"
+    }
+  ]
+}
