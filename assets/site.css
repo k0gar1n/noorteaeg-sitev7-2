@@ -1,0 +1,12 @@
+
+:focus-visible{outline:2px solid #2563eb;outline-offset:2px}
+.img-card{aspect-ratio:16/9;object-fit:cover}
+.poster{width:100%;background:#fff;object-fit:contain}
+.lightbox-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:1000}
+.lightbox-backdrop.open{display:flex}
+.lightbox-img{max-width:95vw;max-height:95vh}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:2rem;color:#fff;user-select:none;padding:.5rem 1rem;cursor:pointer}
+.lightbox-prev{left:1rem}.lightbox-next{right:1rem}.lightbox-close{position:absolute;top:1rem;right:1rem;font-size:2rem;color:#fff;cursor:pointer}
+.hidden{display:none}
+.partner-row img{filter:drop-shadow(0 1px 1px rgba(0,0,0,.05))}
+@media print{nav,.no-print{display:none!important}}
