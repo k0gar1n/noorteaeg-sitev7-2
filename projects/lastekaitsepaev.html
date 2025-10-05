@@ -1,26 +1,49 @@
 <!doctype html><html lang="ru"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lastekaitsepäev Narva‑Jõesuu linnas — MTÜ Noorteaeg</title>
-<script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="../assets/site.css">
+<title>Lastekaitsepäev — MTÜ Noorteaeg</title>
+<link rel="stylesheet" href="../assets/site.css">
+<script src="https://cdn.tailwindcss.com"></script>
 </head><body class="bg-gray-50 text-gray-900">
-<header class="border-b bg-white"><div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-<a href="../index.html#projects" class="text-blue-600">← Назад к проектам</a><a href="../index.html" class="font-semibold">MTÜ Noorteaeg</a></div></header>
+<header class="border-b bg-white">
+  <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="../index.html#projects" class="text-blue-600" data-i18n="back_to_projects">← Назад к проектам</a>
+    <a href="../index.html" class="font-semibold">MTÜ Noorteaeg</a>
+  </div>
+</header>
+
 <main class="max-w-5xl mx-auto px-4 py-10">
-<h1 class="text-3xl font-bold">Lastekaitsepäev Narva‑Jõesuu linnas</h1>
-<p class="mt-4 leading-relaxed">Ежегодный городской праздник ко Дню защиты детей. На центральной площадке работали зоны активности: бесплатные батуты, мастер‑классы по безопасности с Päästeamet и Politsei, творческие столы, игры и эстафеты. Привлекали школьных волонтёров, делали сцену с детскими выступлениями и фотозону. Цель — собрать семьи и показать, что в Нарва‑Йыэсуу детям интересно и безопасно.</p>
-<section class="mt-8"><h2 class="text-2xl font-semibold">Фотографии</h2>
-<div class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4">
-<img src="../assets/photo2.jpg" class="rounded-lg img-card lb-gallery" alt=""><img src="../assets/photo4.jpg" class="rounded-lg img-card lb-gallery" alt=""><img src="../assets/photo6.jpg" class="rounded-lg img-card lb-gallery" alt="">
-</div></section></main>
-<div id="lightbox" class="lightbox-backdrop" aria-hidden="true"><span class="lightbox-close" id="lb-close">×</span>
-<span class="lightbox-nav lightbox-prev" id="lb-prev">‹</span><img class="lightbox-img" id="lb-img"><span class="lightbox-nav lightbox-next" id="lb-next">›</span></div>
+  <h1 class="text-3xl font-bold" data-i18n="proj_laste_title">Lastekaitsepäev Narva-Jõesuu linnas</h1>
+  <p class="mt-4 leading-relaxed" data-i18n="proj_laste_desc">
+    Ежегодный городской праздник ко Дню защиты детей...
+  </p>
+
+  <section class="mt-8">
+    <h2 class="text-2xl font-semibold" data-i18n="photos_title">Фотографии</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4">
+      <img src="../assets/photo2.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../assets/photo4.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../assets/photo6.jpg" class="rounded-lg img-card lb-gallery" alt="">
+    </div>
+  </section>
+</main>
+
+<div id="lightbox" class="lightbox-backdrop" aria-hidden="true">
+  <span class="lightbox-close" id="lb-close">×</span>
+  <span class="lightbox-nav lightbox-prev" id="lb-prev">‹</span>
+  <img class="lightbox-img" id="lb-img">
+  <span class="lightbox-nav lightbox-next" id="lb-next">›</span>
+</div>
+
+<script src="../assets/i18n.js"></script>
 <script>
-const lb=document.getElementById('lightbox'), img=document.getElementById('lb-img'), prev=document.getElementById('lb-prev'), next=document.getElementById('lb-next');
-let list=[...document.querySelectorAll('img.lb-gallery')].map(i=>i.src), idx=0;
-function openL(src){ idx=list.indexOf(src); if(idx<0) idx=0; img.src=list[idx]; lb.classList.add('open'); }
-document.body.addEventListener('click',e=>{ if(e.target.matches('img.lb-gallery')) openL(e.target.src); if(e.target===lb) lb.classList.remove('open'); });
-prev.onclick=()=>{ idx=(idx-1+list.length)%list.length; img.src=list[idx]; };
-next.onclick=()=>{ idx=(idx+1)%list.length; img.src=list[idx]; };
-document.addEventListener('keydown',e=>{ if(!lb.classList.contains('open')) return; if(e.key==='Escape') lb.classList.remove('open'); if(e.key==='ArrowLeft') prev.onclick(); if(e.key==='ArrowRight') next.onclick(); });
+const lb=document.getElementById('lightbox'),img=document.getElementById('lb-img');
+const prev=document.getElementById('lb-prev'),next=document.getElementById('lb-next');
+let list=[...document.querySelectorAll('img.lb-gallery')].map(i=>i.src),idx=0;
+function openL(src){idx=list.indexOf(src);if(idx<0)idx=0;img.src=list[idx];lb.classList.add('open')}
+document.body.addEventListener('click',e=>{if(e.target.matches('img.lb-gallery'))openL(e.target.src);if(e.target===lb)lb.classList.remove('open')});
+prev.onclick=()=>{idx=(idx-1+list.length)%list.length;img.src=list[idx]};
+next.onclick=()=>{idx=(idx+1)%list.length;img.src=list[idx]};
+document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowLeft')prev.onclick();if(e.key==='ArrowRight')next.onclick()});
 </script>
 </body></html>
+
