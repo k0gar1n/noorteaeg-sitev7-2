@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://noorteaeg.ee/</loc><lastmod>2025-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://noorteaeg.ee/projects/lastekaitsepaev.html</loc><lastmod>2025-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://noorteaeg.ee/projects/keskkonnapaev.html</loc><lastmod>2025-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://noorteaeg.ee/projects/roheline-start.html</loc><lastmod>2025-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://noorteaeg.ee/projects/rohelised-koolides.html</loc><lastmod>2025-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://noorteaeg.ee/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://noorteaeg.ee/projects/lastekaitsepaev.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://noorteaeg.ee/projects/keskkonnapaev.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://noorteaeg.ee/projects/roheline-start.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://noorteaeg.ee/projects/rohelised-koolides.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
