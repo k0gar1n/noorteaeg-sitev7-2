@@ -1,12 +1,6 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<style>
-  /* Делает карточки видимыми, даже если в site.css выставлена прозрачность */
-  .img-card { opacity: 1 !important; }
-</style>
-img.className = "rounded-lg w-full h-auto object-cover img-card lb-gallery";
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lastekaitsepäev — MTÜ Noorteaeg</title>
@@ -15,17 +9,24 @@ img.className = "rounded-lg w-full h-auto object-cover img-card lb-gallery";
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    /* Lightbox */
-    .lightbox-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.9);
-      display:flex;align-items:center;justify-content:center;
-      opacity:0;pointer-events:none;transition:.2s;z-index:50}
-    .lightbox-backdrop.open{opacity:1;pointer-events:auto}
-    .lightbox-img{max-width:90vw;max-height:90vh;border-radius:.5rem}
-    .lightbox-close,.lightbox-nav{position:fixed;color:#fff;font-size:2.25rem;
-      line-height:1;cursor:pointer;user-select:none;z-index:60}
-    .lightbox-close{top:16px;right:22px}
-    .lightbox-prev{left:18px}
-    .lightbox-next{right:18px}
+    /* --- ВАЖНО: делаем карточки видимыми --- */
+    .img-card { opacity: 1 !important; }
+
+    /* Лайтбокс */
+    .lightbox-backdrop{
+      position:fixed; inset:0; background:rgba(0,0,0,.9);
+      display:flex; align-items:center; justify-content:center;
+      opacity:0; pointer-events:none; transition:.2s; z-index:50;
+    }
+    .lightbox-backdrop.open{ opacity:1; pointer-events:auto; }
+    .lightbox-img{ max-width:90vw; max-height:90vh; border-radius:.5rem }
+    .lightbox-close,.lightbox-nav{
+      position:fixed; color:#fff; font-size:2.25rem; line-height:1;
+      cursor:pointer; user-select:none; z-index:60
+    }
+    .lightbox-close{ top:16px; right:22px }
+    .lightbox-prev{ left:18px }
+    .lightbox-next{ right:18px }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -47,6 +48,7 @@ img.className = "rounded-lg w-full h-auto object-cover img-card lb-gallery";
 
     <section class="mt-8">
       <h2 class="text-2xl font-semibold" data-i18n="photos_title">Фотографии</h2>
+      <!-- Галерея сгенерируется скриптом -->
       <div id="gallery" class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4"></div>
     </section>
   </main>
@@ -87,19 +89,22 @@ img.className = "rounded-lg w-full h-auto object-cover img-card lb-gallery";
 
   <!-- Галерея: файлы лежат в ../lastekaitsepaev/(1).jpg … (200).jpg -->
   <script>
-    const COUNT = 200;                          // сколько фото
-    const PATH  = "../lastekaitsepaev/";        // папка (из projects/ вверх)
-    const exts  = ["jpg","jpeg","png","webp"];  // если часть в другом формате
+    const COUNT = 200;                          // сколько фото (измени при необходимости)
+    const PATH  = "../lastekaitsepaev/";        // папка с фото (относительно /projects/)
+    const exts  = ["jpg","jpeg","png","webp"];  // допустимые расширения
 
     (function buildGallery(){
       const box = document.getElementById("gallery");
-      // идём от 200 к 1 (если хочешь наоборот — поменяй порядок цикла)
+
+      // идём от 200 к 1; если надо наоборот — поменяй порядок цикла
       for(let n=COUNT; n>=1; n--){
         const img = document.createElement("img");
-        img.className = "rounded-lg img-card lb-gallery";
-        img.loading = "lazy"; img.decoding = "async"; img.alt = "";
+        img.className = "rounded-lg w-full h-auto object-cover img-card lb-gallery";
+        img.loading = "lazy";
+        img.decoding = "async";
+        img.alt = "";
 
-        // имена в твоей папке: (10).jpg, (100).jpg и т.д.
+        // имена именно в виде (10).jpg, (100).jpg и т.д.
         img.src = `${PATH}(${n}).jpg`;
 
         // если не загрузилось — попробуем другие расширения
