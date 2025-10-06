@@ -217,26 +217,74 @@
 </div>
 
 <script>
-const DICT={
-  ru:{
-    back_to_projects:"← Назад к проектам",
-    photos_title:"Фотографии",
-    proj_laste_title:"Lastekaitsepäev Narva-Jõesuu linnas",
-    proj_laste_desc:"Ежегодный городской праздник ко Дню защиты детей: бесплатные батуты, мастер-классы безопасности с Päästeamet и Politsei, творческие зоны и эстафеты. Цель — объединить семьи и показать, что в Нарва-Йыэсуу детям интересно и безопасно."
+const DICT = {
+  ru: {
+    back_to_projects: "← Назад к проектам",
+    photos_title: "Фотографии",
+    proj_roheline_title: "Roheline Start – perepäev Narva-Jõesuus",
+    proj_roheline_desc: `
+      30 августа 2025 года у школы Нарва-Йыэсуу прошёл масштабный семейный праздник <strong>“Roheline Start”</strong>, собравший сотни жителей и гостей города. 
+      Целью мероприятия было объединить семьи, детей и молодёжь Ида-Вирумаа, повысить экологическую осознанность и показать, что забота о природе может быть увлекательной, доброй и близкой каждому.<br>
+      🎡 <strong>Развлечения и активная программа:</strong>
+      – Бесплатные батуты и карусель, сладкая вата для всех гостей;
+      – Весёлые эстафеты и конкурсы под руководством профессионального ведущего;
+      – Игры, мастер-классы и познавательные зоны для детей и взрослых.<br>
+      🚒 <strong>Интерактивные зоны партнёров:</strong>
+      – Демонстрация пожарной техники и практическое тушение огня от Päästeamet;
+      – Знакомство с полицией и викторина “Безопасная дорога до школы” от Politsei- ja Piirivalveamet;
+      – Интерактивная зона Kaitseliit и выставка военной техники;
+      – Медицинский пункт от SA Ida-Viru Keskhaigla — измерение давления, сахара и обучение первой помощи.<br>
+      🌿 <strong>Экологическая часть проекта:</strong>
+      – Мини-лекции о климате, переработке отходов и сокращении CO₂;
+      – Мастер-классы по апсайклингу и созданию полезных вещей из старых материалов;
+      – Совместное строительство “Отеля для насекомых”, который остался на территории школы;
+      – “Стена зелёных обещаний” — участники писали, что готовы делать ради природы;
+      – QR-коды с фактами об экологии и советами по устойчивому образу жизни.<br>
+      🎥 <strong>Атмосфера и память:</strong>
+      Мероприятие сопровождалось видеосъёмкой и фотоотчётом, чтобы сохранить лучшие моменты. 
+      На сцене звучала музыка, ведущий создавал праздничное настроение, а в завершение прошёл розыгрыш призов для участников “зелёного вызова” в соцсетях.<br>
+      Проект реализован <strong>MTÜ Tulevik Pluss</strong> совместно с <strong>MTÜ Noorteaeg</strong> и <strong>Narva-Jõesuu Linnavalitsus</strong> при поддержке Фонда справедливого перехода.<br>
+      “Roheline Start” стал примером того, как местное сообщество может объединиться ради будущего, где экология, образование и радость идут рука об руку.
+    `
   },
-  et:{
-    back_to_projects:"← Tagasi projektide juurde",
-    photos_title:"Fotod",
-    proj_laste_title:"Lastekaitsepäev Narva-Jõesuu linnas",
-    proj_laste_desc:"Iga-aastane linnapidu lastekaitsepäeva puhul: tasuta batuudid, Päästeameti ja Politsei turvalisuse töötoad, loovnurgad ja teatevõistlused. Eesmärk on tuua pered kokku ja näidata, et Narva-Jõesuus on lastel huvitav ja turvaline."
+  et: {
+    back_to_projects: "← Tagasi projektide juurde",
+    photos_title: "Fotod",
+    proj_roheline_title: "Roheline Start – perepäev Narva-Jõesuus",
+    proj_roheline_desc: `
+      30. augustil 2025 toimus Narva-Jõesuu kooli juures suur perepäev <strong>“Roheline Start”</strong>, mis tõi kokku sadu linnaelanikke ja külalisi. 
+      Ürituse eesmärk oli ühendada peresid, lapsi ja noori Ida-Virumaalt, tõsta keskkonnateadlikkust ning näidata, et looduse eest hoolitsemine võib olla lõbus ja kõigile jõukohane.<br>
+      🎡 <strong>Meelelahutus ja aktiivne programm:</strong>
+      – Tasuta batuudid ja karussell, suhkruvatt kõigile külalistele;
+      – Lõbusad teatevõistlused ja mängud professionaalse juhiga;
+      – Töötoad ja teadmisi pakkuvad alad lastele ja täiskasvanutele.<br>
+      🚒 <strong>Partnerite tegevusalad:</strong>
+      – Päästeameti tuleohutuse demonstratsioon ja praktiline kustutamine;
+      – Politsei ja Piirivalveameti viktoriin “Turvaline tee kooli”;
+      – Kaitseliidu ala ja sõjaväetehnika näitus;
+      – SA Ida-Viru Keskhaigla tervisenurk — vererõhu, suhkru mõõtmine ja esmaabi õpetus.<br>
+      🌿 <strong>Keskkonna osa:</strong>
+      – Mini-loengud kliimast ja jäätmete vähendamisest;
+      – Uuskasutuse töötoad ja loovad lahendused vanadele esemetele;
+      – Ühine “Putukahotelli” ehitus, mis jäi kooli territooriumile;
+      – “Roheliste lubaduste sein” — osalejad kirjutasid, mida nad looduse heaks teevad;
+      – QR-koodid keskkonnateemaliste faktide ja soovitustega.<br>
+      🎥 <strong>Õhkkond ja mälestused:</strong>
+      Üritust saatis video- ja fotosalvestus, et jäädvustada parimad hetked. Laval mängis muusika ja toimus auhinnaloos “rohelise väljakutse” osalejatele.<br>
+      Projekti viisid ellu <strong>MTÜ Tulevik Pluss</strong> koostöös <strong>MTÜ Noorteaeg</strong> ja <strong>Narva-Jõesuu Linnavalitsusega</strong> õiglasülemineku fondi toel.<br>
+      “Roheline Start” on suurepärane näide, kuidas kogukond saab ühineda tuleviku nimel, kus ökoloogia, haridus ja rõõm käivad käsikäes.
+    `
   }
 };
-function applyI18n(){
-  const lang=localStorage.getItem('lang')||'ru';
-  document.documentElement.lang=lang;
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const k=el.getAttribute('data-i18n');
-    el.textContent=(DICT[lang]&&DICT[lang][k])||el.textContent;
+
+function applyI18n() {
+  const lang = localStorage.getItem('lang') || 'ru';
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (DICT[lang] && DICT[lang][k]) {
+      el.innerHTML = DICT[lang][k]; // <-- вот это ключевое изменение (innerHTML вместо textContent)
+    }
   });
 }
 applyI18n();
