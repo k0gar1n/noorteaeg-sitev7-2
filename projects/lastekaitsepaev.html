@@ -28,20 +28,52 @@
 
   <!-- Контент -->
   <main class="max-w-5xl mx-auto px-4 py-10">
-    <h1 class="text-3xl font-bold" data-i18n="proj_laste_title">Lastekaitsepäev Narva-Jõesuus</h1>
+<main class="max-w-5xl mx-auto px-4 py-10">
+  <h1 class="text-3xl font-bold" data-i18n="proj_roheline_title">Roheline Start – perepäev Narva-Jõesuus</h1>
+  <p class="mt-4 leading-relaxed preline" data-i18n="proj_roheline_desc">
+    Большой семейный день в парке…
+  </p>
 
-    <!-- Описание: текст подставится из словаря DICT -->
-    <p class="mt-4 leading-relaxed preline" data-i18n="proj_laste_desc">
-      …
-    </p>
-
-    <!-- Галерея -->
-    <section class="mt-8">
-      <h2 class="text-2xl font-semibold" data-i18n="photos_title">Фотографии</h2>
-
-      <!-- контейнер, в который JS добавит 200 изображений -->
-      <div id="gallery" class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4"></div>
-    </section>
+  <section class="mt-8">
+    <h2 class="text-2xl font-semibold" data-i18n="photos_title">Фотографии</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4">
+      <img src="../Roheline start 2/35.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start 2/34.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start 2/32.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start 2/31.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start 2/30.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start 2/29.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start 2/28.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start 2/27.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start 2/26.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start 2/25.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start 2/24.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start 2/23.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start 2/22.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start 2/21.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start 2/20.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start/19.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start/18.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start/17.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start/16.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start/15.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start/14.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start/13.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start/12.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start/11.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start/10.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start/9.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start/8.jpg" class="rounded-lg img-card lb-gallery" alt="">      
+      <img src="../Roheline start/7.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start/6.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start/5.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start/4.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start/3.jpg" class="rounded-lg img-card lb-gallery" alt="">
+      <img src="../Roheline start/2.jpg" class="rounded-lg img-card lb-gallery" alt="">  
+      <img src="../Roheline start/1.jpg" class="rounded-lg img-card lb-gallery" alt=""> 
+    </div>
+  </section>
+</main>
   </main>
 
   <!-- Лайтбокс -->
@@ -132,20 +164,6 @@ Kõik tegevused olid kõigile tasuta.
     applyI18n();
   </script>
 
-  <!-- Генерация 200 изображений -->
-  <script>
-    // Файлы лежат в репозитории в корневой папке /lastekaitsepaev/(1).jpg … (200).jpg
-    // Мы находимся в /projects/, поэтому путь начинается с "../"
-    const gallery = document.getElementById('gallery');
-    const total = 200;                    // при необходимости поменяйте число
-    const base  = "../lastekaitsepaev/("; // открывающая скобка включена специально
-
-    let html = "";
-    for (let i = 1; i <= total; i++) {
-      html += `<img src="${base}${i}).jpg" class="rounded-lg img-card lb-gallery" alt="photo ${i}">`;
-    }
-    gallery.innerHTML = html;
-  </script>
 
   <!-- Лайтбокс -->
   <script>
