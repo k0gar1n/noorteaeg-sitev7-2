@@ -19,42 +19,7 @@
 
   <section class="mt-8">
     <h2 class="text-2xl font-semibold" data-i18n="photos_title">Фотографии</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4">
-      <img src="../Roheline start 2/35.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start 2/34.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start 2/32.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start 2/31.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start 2/30.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start 2/29.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start 2/28.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start 2/27.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start 2/26.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start 2/25.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start 2/24.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start 2/23.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start 2/22.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start 2/21.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start 2/20.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start/19.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start/18.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start/17.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start/16.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start/15.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start/14.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start/13.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start/12.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start/11.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start/10.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start/9.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start/8.jpg" class="rounded-lg img-card lb-gallery" alt="">      
-      <img src="../Roheline start/7.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start/6.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start/5.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start/4.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start/3.jpg" class="rounded-lg img-card lb-gallery" alt="">
-      <img src="../Roheline start/2.jpg" class="rounded-lg img-card lb-gallery" alt="">  
-      <img src="../Roheline start/1.jpg" class="rounded-lg img-card lb-gallery" alt=""> 
-    </div>
+    <div id="gallery" class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4"></div>
   </section>
 </main>
 
@@ -89,6 +54,43 @@ function applyI18n(){
   });
 }
 applyI18n();
+</script>
+<script>
+// 1) Опиши наборы фотографий
+//   path: папка (относительно этой страницы)
+//   from..to: диапазон номеров (включительно). from может быть больше to.
+const sets = [
+  { path: "../assets/roheline-start-2/", from: 35, to: 20 },
+  { path: "../assets/roheline-start/",  from: 19, to: 1  }
+];
+
+// 2) Допустимые расширения (оставь "jpg" если все jpg)
+const exts = ["jpg","jpeg","png","webp"];
+
+// 3) Сгенерировать <img>
+const box = document.getElementById("gallery");
+for (const s of sets) {
+  const step = s.from >= s.to ? -1 : 1;
+  for (let n = s.from; step<0 ? n>=s.to : n<=s.to; n+=step) {
+    let el = document.createElement("img");
+    el.className = "rounded-lg img-card lb-gallery";
+    el.loading = "lazy";
+    el.decoding = "async";
+    el.alt = "";
+    // пробуем несколько расширений (первое подходящее загрузится)
+    el.src = s.path + n + ".jpg";
+    el.onerror = function tryNext() {
+      // по очереди пробуем другие расширения
+      const cur = exts.indexOf((this.src.split(".").pop()||"").toLowerCase());
+      for (let i=0;i<exts.length;i++){
+        const next = exts[(cur+1+i)%exts.length];
+        const candidate = s.path + n + "." + next;
+        if (candidate !== this.src) { this.onerror=null; this.src=candidate; break; }
+      }
+    };
+    box.appendChild(el);
+  }
+}
 </script>
 
 <script>
