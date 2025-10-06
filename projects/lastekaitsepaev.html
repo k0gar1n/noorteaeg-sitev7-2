@@ -4,10 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lastekaitsepäev — MTÜ Noorteaeg</title>
+
+  <!-- ваши стили и иконки -->
   <link rel="stylesheet" href="../assets/site.css">
+  <link rel="icon" type="image/png" href="../assets/noorteaeg_logo_new.png">
+  <link rel="apple-touch-icon" href="../assets/noorteaeg_logo_new.png">
+
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* чтобы \n в шаблоне превращались в перенос строки */
+    .preline { white-space: pre-line; }
+  </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
+
   <!-- Шапка -->
   <header class="border-b bg-white">
     <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -18,14 +28,18 @@
 
   <!-- Контент -->
   <main class="max-w-5xl mx-auto px-4 py-10">
-    <h1 class="text-3xl font-bold" data-i18n="proj_laste_title">Lastekaitsepäev Narva-Jõesuu linnas</h1>
+    <h1 class="text-3xl font-bold" data-i18n="proj_laste_title">Lastekaitsepäev Narva-Jõesuus</h1>
 
-    <!-- Описание с HTML (поддержка <strong>, <ul> и т.п.) -->
-    <div id="proj-desc" class="prose prose-lg max-w-none mt-4 leading-relaxed"></div>
+    <!-- Описание: текст подставится из словаря DICT -->
+    <p class="mt-4 leading-relaxed preline" data-i18n="proj_laste_desc">
+      …
+    </p>
 
     <!-- Галерея -->
-    <section class="mt-10">
+    <section class="mt-8">
       <h2 class="text-2xl font-semibold" data-i18n="photos_title">Фотографии</h2>
+
+      <!-- контейнер, в который JS добавит 200 изображений -->
       <div id="gallery" class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4"></div>
     </section>
   </main>
@@ -38,136 +52,136 @@
     <span class="lightbox-nav lightbox-next" id="lb-next">›</span>
   </div>
 
+  <!-- i18n + описание -->
   <script>
-    /* ====== ТЕКСТЫ (RU/ET) с HTML ====== */
     const DICT = {
       ru: {
         back_to_projects: "← Назад к проектам",
         photos_title: "Фотографии",
-        proj_laste_title: "Lastekaitsepäev Narva-Jõesuu linnas",
+        proj_laste_title: "«Suvehooaja avamine ja Lastekaitsepäev» — Нарва-Йыэсуу",
         proj_laste_desc: `
-<p>1 июня 2025 года у маяка Нарва-Йыэсуу прошёл яркий и радостный праздник — <strong>«Suvehooaja avamine ja Lastekaitsepäev»</strong>. Мероприятие стало символическим открытием летнего сезона и прекрасным поводом отпраздновать Международный день защиты детей вместе с семьями, детьми и молодёжью.</p>
+1 июня 2025 года у маяка Нарва-Йыэсуу прошёл яркий и радостный праздник — <strong>«Suvehooaja avamine ja Lastekaitsepäev»</strong>.
+Мероприятие стало символическим открытием летнего сезона и прекрасным поводом отпраздновать Международный день защиты детей вместе с семьями, детьми и молодёжью.
 
-<p><strong>🎡 Программа и развлечения:</strong></p>
-<ul>
-  <li>Бесплатный парк детских аттракционов — батуты, карусели и сладкая вата для всех гостей;</li>
-  <li>Игровые зоны и весёлые конкурсы для детей и родителей;</li>
-  <li>Мастер-классы — творческие задания и рисование на свежем воздухе;</li>
-  <li>Активная зона <strong>Karu Klubi</strong> с играми и испытаниями для всей семьи;</li>
-  <li><strong>Narva-Jõesuu Noortekeskus</strong> — молодёжная площадка с настольными и интерактивными играми;</li>
-  <li><strong>Tänavaraamatukogu</strong> — уличная библиотека с книгами и викторинами для детей.</li>
-</ul>
+🎡 <strong>Программа и развлечения:</strong>
+– Бесплатный парк детских аттракционов — батуты, карусели и сладкая вата для всех гостей;
+– Игровые зоны и весёлые конкурсы для детей и родителей;
+– Мастер-классы — творческие задания и рисование на свежем воздухе;
+– Активная зона Karu Klubi с играми и испытаниями для всей семьи;
+– Narva-Jõesuu Noortekeskus — молодёжная площадка с настольными и интерактивными играми;
+– Tänavaraamatukogu — уличная библиотека с книгами и викторинами для детей.
 
-<p><strong>🎶 Музыкальная и концертная часть:</strong></p>
-<ul>
-  <li>За настроение весь день отвечал <strong>DJ Bassofsky</strong>, создавая атмосферу настоящего летнего праздника;</li>
-  <li>В 14:00 состоялся концерт <strong>«Suvi – tulelind»</strong>, где выступили популярные исполнители — Владимир Чердаков, Андриана Чупова и Кирилл Адылин.</li>
-</ul>
+🎶 <strong>Музыкальная и концертная часть:</strong>
+– За настроение весь день отвечал DJ Bassofsky, создавая атмосферу настоящего летнего праздника;
+– В 14:00 состоялся концерт «Suvi – tulelind» с участием Владимира Чердакова, Андрианы Чуповой и Кирилла Адылина.
 
-<p><strong>🌱 Ценности и миссия:</strong><br>
-Праздник не только дарил веселье, но и напоминал о важности заботы о природе и бережного отношения к окружающей среде. На территории работали эко-мастерские и интерактивные зоны, где участники узнавали о переработке и экологичных привычках.</p>
+🌱 <strong>Ценности и миссия:</strong>
+Праздник не только дарил веселье, но и напоминал о важности заботы о природе и бережного отношения к окружающей среде. Работали эко-мастерские и интерактивные зоны с советами по переработке и устойчивым привычкам.
 
-<p><strong>👨‍👩‍👧‍👦 Семейная атмосфера и единство:</strong><br>
-Сотни жителей и гостей города провели день у моря, наслаждаясь солнцем, музыкой и общением. Главная идея — дать детям ощущение праздника, а семьям возможность быть вместе — полностью реализовалась: на мероприятии царили радость, смех и доброта.</p>
+👨‍👩‍👧‍👦 <strong>Семейная атмосфера и единство:</strong>
+Сотни жителей и гостей города провели день у моря, наслаждаясь солнцем, музыкой и общением. Главная идея — дать детям ощущение праздника, а семьям возможность быть вместе — полностью реализовалась.
 
-<p><strong>📸 Организация и партнёры:</strong><br>
-Проект реализовал <strong>MTÜ Noorteaeg</strong> совместно с <strong>Narva-Jõesuu Linnavalitsus</strong> при поддержке <strong>Фонда справедливого перехода</strong>. Все активности были бесплатными и открытыми для всех желающих.</p>
+📸 <strong>Организация и партнёры:</strong>
+Проект реализовал MTÜ Noorteaeg совместно с Narva-Jõesuu Linnavalitsus при поддержке Фонда справедливого перехода.
+Все активности были бесплатными и открытыми для всех желающих.
         `
       },
       et: {
         back_to_projects: "← Tagasi projektide juurde",
         photos_title: "Fotod",
-        proj_laste_title: "Lastekaitsepäev Narva-Jõesuu linnas",
+        proj_laste_title: "Suvehooaja avamine ja Lastekaitsepäev — Narva-Jõesuu",
         proj_laste_desc: `
-<p>1. juunil 2025 toimus Narva-Jõesuu tuletorni juures rõõmus perepidu — <strong>«Suvehooaja avamine ja Lastekaitsepäev»</strong>. Üritus avas sümboolselt suvehooaja ja tõi kokku pered, lapsed ning noored.</p>
+1. juunil 2025 toimus Narva-Jõesuu tuletorni juures rõõmus perepidu — <strong>„Suvehooaja avamine ja Lastekaitsepäev“</strong>.
+Üritus avas sümboolselt suvehooaja ning koondas pered, lapsed ja noored ühise tähistamise ümber.
 
-<p><strong>🎡 Programm ja meelelahutus:</strong></p>
-<ul>
-  <li>Tasuta laste atraktsioonid — batuudid, karussellid ja suhkruvatt kõigile;</li>
-  <li>Mängualad ja lõbusad võistlused lastele ning vanematele;</li>
-  <li>Loovtöötoad ja joonistamine vabas õhus;</li>
-  <li><strong>Karu Klubi</strong> aktiivne ala kogu perele;</li>
-  <li><strong>Narva-Jõesuu Noortekeskus</strong> — lauamängud ja interaktiivsed tegevused;</li>
-  <li><strong>Tänavaraamatukogu</strong> — raamatud ja viktoriinid lastele.</li>
-</ul>
+🎡 <strong>Programm ja tegevused:</strong>
+– Tasuta laste atraktsioonipark — batuudid, karussellid ja suhkruvatt kõigile;
+– Mängualad ja lõbusad võistlused lastele ja vanematele;
+– Loovtöötoad ja joonistamine värskes õhus;
+– Karu Klubi aktiivne ala tervele perele;
+– Narva-Jõesuu Noortekeskuse lauamängud ja interaktiivsed mängud;
+– Tänavaraamatukogu — raamatud ja viktoriinid lastele.
 
-<p><strong>🎶 Muusika ja kontsert:</strong></p>
-<ul>
-  <li>Meeleolu lõi kogu päeva <strong>DJ Bassofsky</strong>;</li>
-  <li>Kell 14:00 toimus kontsert <strong>«Suvi – tulelind»</strong> esinejatega: Vladimir Tšerdakov, Andriana Tšupova ja Kirill Adõlin.</li>
-</ul>
+🎶 <strong>Muusika ja kontserdid:</strong>
+– Päeva jooksul hoidis meeleolu DJ Bassofsky;
+– Kell 14 toimus kontsert „Suvi – tulelind“, kus esinesid Vladimir Tšerdakov, Andriana Tšupova ja Kirill Adõlin.
 
-<p><strong>🌱 Väärtused ja eesmärk:</strong><br>
-Lisaks meelelahutusele pööras pidu tähelepanu loodussäästlikule käitumisele. Kohapeal olid rohe-töötoad ja interaktiivsed nurgad taaskasutusest ja harjumustest.</p>
+🌱 <strong>Väärtused ja missioon:</strong>
+Lisaks lõbule rõhutati hoolimist loodusest ja keskkonnasõbralikke harjumusi. Töötasid ökotöötoad ja infopunktid taaskasutuse kohta.
 
-<p><strong>👨‍👩‍👧‍👦 Pereõhkkond:</strong><br>
-Sajad linlased ja külalised veetsid toreda päeva mere ääres — päike, muusika ja koosolemine. Peaeesmärk — rõõm lastele ja ühine aeg peredele — sai teoks.</p>
+👨‍👩‍👧‍👦 <strong>Pereõhkkond:</strong>
+Sajad linlased ja külalised veetsid päeva mere ääres päikest ja muusikat nautides — koosolemisrõõm oli kogu ürituse keskmes.
 
-<p><strong>📸 Korraldus ja partnerid:</strong><br>
-Projekti viis läbi <strong>MTÜ Noorteaeg</strong> koos <strong>Narva-Jõesuu Linnavalitsusega</strong>, toetajaks <strong>Õiglase Ülemineku Fond</strong>. Kõik tegevused olid tasuta ja kõigile avatud.</p>
+📸 <strong>Korraldus ja partnerid:</strong>
+Projekti viis ellu MTÜ Noorteaeg koostöös Narva-Jõesuu Linnavalitsusega õiglase ülemineku fondi toel.
+Kõik tegevused olid kõigile tasuta.
         `
       }
     };
 
-    /* ====== Применение перевода + рендер HTML описания ====== */
     function applyI18n() {
       const lang = localStorage.getItem('lang') || 'ru';
       document.documentElement.lang = lang;
-
-      // Текстовые элементы без HTML
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const k = el.getAttribute('data-i18n');
-        if (k === 'proj_laste_desc') return; // описание рендерим отдельно
-        if (DICT[lang] && DICT[lang][k]) el.textContent = DICT[lang][k];
+        if (DICT[lang] && DICT[lang][k]) {
+          el.innerHTML = DICT[lang][k];   // важно: innerHTML, чтобы работали <strong> и <br>
+        }
       });
-
-      // Описание с HTML
-      const desc = document.getElementById('proj-desc');
-      desc.innerHTML = (DICT[lang] && DICT[lang].proj_laste_desc) || '';
     }
     applyI18n();
+  </script>
 
-    /* ====== Галерея: 200 фото "(1).jpg"…"(200).jpg" в ../lastekaitsepaev/ ====== */
-    const COUNT = 200; // ← если фото больше/меньше — поменяйте это число
+  <!-- Генерация 200 изображений -->
+  <script>
+    // Файлы лежат в репозитории в корневой папке /lastekaitsepaev/(1).jpg … (200).jpg
+    // Мы находимся в /projects/, поэтому путь начинается с "../"
     const gallery = document.getElementById('gallery');
+    const total = 200;                    // при необходимости поменяйте число
+    const base  = "../lastekaitsepaev/("; // открывающая скобка включена специально
 
-    // Сгенерируем плитки
-    const frag = document.createDocumentFragment();
-    for (let i = 1; i <= COUNT; i++) {
-      const url = `../lastekaitsepaev/(${i}).jpg`; // скобки в имени допустимы
-      const img = document.createElement('img');
-      img.src = url;
-      img.alt = `Photo ${i}`;
-      img.className = 'rounded-lg img-card lb-gallery';
-      frag.appendChild(img);
+    let html = "";
+    for (let i = 1; i <= total; i++) {
+      html += `<img src="${base}${i}).jpg" class="rounded-lg img-card lb-gallery" alt="photo ${i}">`;
     }
-    gallery.appendChild(frag);
+    gallery.innerHTML = html;
+  </script>
 
-    /* ====== Лайтбокс ====== */
+  <!-- Лайтбокс -->
+  <script>
     const lb = document.getElementById('lightbox'),
-          lbImg = document.getElementById('lb-img'),
+          img = document.getElementById('lb-img'),
           prev = document.getElementById('lb-prev'),
-          next = document.getElementById('lb-next'),
-          closeBtn = document.getElementById('lb-close');
+          next = document.getElementById('lb-next');
 
-    let list = [...document.querySelectorAll('img.lb-gallery')].map(i => i.src);
-    let idx = 0;
+    let list = [], idx = 0;
 
-    function openLb(src) { idx = list.indexOf(src); if (idx < 0) idx = 0; lbImg.src = list[idx]; lb.classList.add('open'); }
-    function show(d) { idx = (idx + d + list.length) % list.length; lbImg.src = list[idx]; }
+    // собрать список картинок после вставки галереи
+    function rebuildList(){
+      list = [...document.querySelectorAll('img.lb-gallery')].map(i => i.src);
+    }
+    rebuildList();
+
+    function openL(src){
+      idx = list.indexOf(src);
+      if (idx < 0) idx = 0;
+      img.src = list[idx];
+      lb.classList.add('open');
+    }
 
     document.body.addEventListener('click', e => {
-      if (e.target.matches('img.lb-gallery')) openLb(e.target.src);
-      if (e.target === lb) lb.classList.remove('open');
+      if (e.target.matches('img.lb-gallery')) openL(e.target.src);
+      if (e.target === lb || e.target.id === 'lb-close') lb.classList.remove('open');
     });
-    prev.onclick = () => show(-1);
-    next.onclick = () => show(1);
-    closeBtn.onclick = () => lb.classList.remove('open');
+
+    prev.onclick = () => { idx = (idx - 1 + list.length) % list.length; img.src = list[idx]; };
+    next.onclick = () => { idx = (idx + 1) % list.length;           img.src = list[idx]; };
+
     document.addEventListener('keydown', e => {
       if (!lb.classList.contains('open')) return;
-      if (e.key === 'Escape') lb.classList.remove('open');
-      if (e.key === 'ArrowLeft') show(-1);
-      if (e.key === 'ArrowRight') show(1);
+      if (e.key === 'Escape')      lb.classList.remove('open');
+      if (e.key === 'ArrowLeft')   prev.onclick();
+      if (e.key === 'ArrowRight')  next.onclick();
     });
   </script>
 </body>
