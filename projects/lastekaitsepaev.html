@@ -36,12 +36,11 @@
   <main class="max-w-5xl mx-auto px-4 py-10">
     <h1 class="text-3xl font-bold" data-i18n="proj_laste_title">Lastekaitsepäev Narva-Jõesuu linnas</h1>
     <p class="mt-4 leading-relaxed" data-i18n="proj_laste_desc">
-      Ежегодный городской праздник ко Дню защиты детей: бесплатные батуты, мастер-классы безопасности с Päästeamet и Politsei, творческие зоны и эстафеты. Цель — объединить семьи и показать, что в Нарва-Йыэсуу детям интересно и безопасно.
+      Ежегодный городской праздник ко Дню защиты детей: бесплатные батуты, мастер-классы безопасности с Päästeamet и Politsei, творческие зоны и эстафеты.
     </p>
 
     <section class="mt-8">
       <h2 class="text-2xl font-semibold" data-i18n="photos_title">Фотографии</h2>
-      <!-- Галерея сгенерируется скриптом -->
       <div id="gallery" class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4"></div>
     </section>
   </main>
@@ -61,13 +60,13 @@
         back_to_projects:"← Назад к проектам",
         photos_title:"Фотографии",
         proj_laste_title:"Lastekaitsepäev Narva-Jõesuu linnas",
-        proj_laste_desc:"Ежегодный городской праздник ко Дню защиты детей: бесплатные батуты, мастер-классы безопасности с Päästeamet и Politsei, творческие зоны и эстафеты. Цель — объединить семьи и показать, что в Нарва-Йыэсуу детям интересно и безопасно."
+        proj_laste_desc:"Ежегодный городской праздник ко Дню защиты детей: бесплатные батуты, мастер-классы безопасности с Päästeamet и Politsei, творческие зоны и эстафеты."
       },
       et:{
         back_to_projects:"← Tagasi projektide juurde",
         photos_title:"Fotod",
         proj_laste_title:"Lastekaitsepäev Narva-Jõesuu linnas",
-        proj_laste_desc:"Iga-aastane linnapidu lastekaitsepäeval: tasuta batuudid, Päästeameti ja Politsei ohutuse töötoad, loovtsoonid ja teatevõistlused. Eesmärk on peresid kokku tuua ning näidata, et Narva-Jõesuus on lastel põnev ja turvaline."
+        proj_laste_desc:"Iga-aastane linnapidu lastekaitsepäeval: tasuta batuudid, Päästeameti ja Politsei ohutuse töötoad, loovtsoonid ja teatevõistlused."
       }
     };
     (function applyI18n(){
@@ -80,29 +79,33 @@
     })();
   </script>
 
-  <!-- Генерация 200 фото: assets/lastekaitsepaev/1.jpg ... 200.jpg -->
+  <!-- Галерея: файлы лежат в ../lastekaitsepaev/(1).jpg … (200).jpg -->
   <script>
-    // Папка с фото (относительно этого файла)
-    const set = { path: "../lastekaitsepaev/", from: (200), to: (1) };
-    const exts = ["jpg","jpeg","png","webp"]; // допустимые расширения
+    const COUNT = 200;                          // сколько фото
+    const PATH  = "../lastekaitsepaev/";        // папка (из projects/ вверх)
+    const exts  = ["jpg","jpeg","png","webp"];  // если часть в другом формате
 
     (function buildGallery(){
       const box = document.getElementById("gallery");
-      const step = set.from >= set.to ? -1 : 1;
-
-      for (let n=set.from; step<0 ? n>=set.to : n<=set.to; n+=step){
+      // идём от 200 к 1 (если хочешь наоборот — поменяй порядок цикла)
+      for(let n=COUNT; n>=1; n--){
         const img = document.createElement("img");
         img.className = "rounded-lg img-card lb-gallery";
         img.loading = "lazy"; img.decoding = "async"; img.alt = "";
-        img.src = set.path + n + ".jpg";
+
+        // имена в твоей папке: (10).jpg, (100).jpg и т.д.
+        img.src = `${PATH}(${n}).jpg`;
+
+        // если не загрузилось — попробуем другие расширения
         img.onerror = function tryNext(){
-          const curExt = (this.src.split(".").pop()||"").toLowerCase();
-          const idx = exts.indexOf(curExt);
-          for (let i=1;i<=exts.length;i++){
-            const candidate = set.path + n + "." + exts[(idx+i)%exts.length];
+          const cur = (this.src.split(".").pop()||"").toLowerCase();
+          const idx = exts.indexOf(cur);
+          for(let i=1;i<=exts.length;i++){
+            const candidate = `${PATH}(${n}).${exts[(idx+i)%exts.length]}`;
             if (candidate !== this.src){ this.onerror=null; this.src=candidate; break; }
           }
         };
+
         box.appendChild(img);
       }
     })();
