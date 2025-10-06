@@ -1,107 +1,176 @@
-<!doctype html><html lang="ru"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Roheline Start — MTÜ Noorteaeg</title>
-<link rel="stylesheet" href="../assets/site.css">
-<script src="https://cdn.tailwindcss.com"></script>
-</head><body class="bg-gray-50 text-gray-900">
-<header class="border-b bg-white">
-  <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-    <a href="../index.html#projects" class="text-blue-600" data-i18n="back_to_projects">← Назад к проектам</a>
-    <a href="../index.html" class="font-semibold">MTÜ Noorteaeg</a>
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roheline Start — MTÜ Noorteaeg</title>
+
+  <!-- ваш общий стиль, если есть -->
+  <link rel="stylesheet" href="../assets/site.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* лайтбокс */
+    .lightbox-backdrop{
+      position:fixed; inset:0; background:rgba(0,0,0,.9);
+      display:flex; align-items:center; justify-content:center;
+      opacity:0; pointer-events:none; transition:.2s;
+      z-index:50;
+    }
+    .lightbox-backdrop.open{ opacity:1; pointer-events:auto; }
+    .lightbox-img{ max-width:90vw; max-height:90vh; border-radius:.5rem }
+    .lightbox-close,.lightbox-nav{
+      position:fixed; color:#fff; font-size:2.25rem; line-height:1;
+      cursor:pointer; user-select:none; z-index:60
+    }
+    .lightbox-close{ top:16px; right:22px }
+    .lightbox-prev{ left:18px }
+    .lightbox-next{ right:18px }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Шапка -->
+  <header class="border-b bg-white">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="../index.html#projects" class="text-blue-600" data-i18n="back_to_projects">← Назад к проектам</a>
+      <a href="../index.html" class="font-semibold">MTÜ Noorteaeg</a>
+    </div>
+  </header>
+
+  <!-- Контент -->
+  <main class="max-w-5xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold" data-i18n="proj_roheline_title">Roheline Start – perepäev Narva-Jõesuus</h1>
+
+    <p class="mt-4 leading-relaxed" data-i18n="proj_roheline_desc">
+      Большой семейный день: спорт-зоны, творческие мастер-классы, настольные игры и ярмарка обмена вещами. Участие бесплатное; материалы предоставляет команда.
+    </p>
+
+    <section class="mt-8">
+      <h2 class="text-2xl font-semibold" data-i18n="photos_title">Фотографии</h2>
+
+      <!-- Контейнер галереи. Изображения будут добавлены скриптом ниже -->
+      <div id="gallery" class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4"></div>
+    </section>
+  </main>
+
+  <!-- Лайтбокс -->
+  <div id="lightbox" class="lightbox-backdrop" aria-hidden="true">
+    <span class="lightbox-close" id="lb-close">×</span>
+    <span class="lightbox-nav lightbox-prev" id="lb-prev">‹</span>
+    <img class="lightbox-img" id="lb-img" alt="">
+    <span class="lightbox-nav lightbox-next" id="lb-next">›</span>
   </div>
-</header>
 
-<main class="max-w-5xl mx-auto px-4 py-10">
-  <h1 class="text-3xl font-bold" data-i18n="proj_roheline_title">Roheline Start – perepäev Narva-Jõesuus</h1>
-  <p class="mt-4 leading-relaxed" data-i18n="proj_roheline_desc">
-    Большой семейный день в парке…
-  </p>
-
-  <section class="mt-8">
-    <h2 class="text-2xl font-semibold" data-i18n="photos_title">Фотографии</h2>
-    <div id="gallery" class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4"></div>
-  </section>
-</main>
-
-<div id="lightbox" class="lightbox-backdrop" aria-hidden="true">
-  <span class="lightbox-close" id="lb-close">×</span>
-  <span class="lightbox-nav lightbox-prev" id="lb-prev">‹</span>
-  <img class="lightbox-img" id="lb-img">
-  <span class="lightbox-nav lightbox-next" id="lb-next">›</span>
-</div>
-
-<script>
-const DICT={
-  ru:{
-    back_to_projects:"← Назад к проектам",
-    photos_title:"Фотографии",
-    proj_roheline_title:"Roheline Start – perepäev Narva-Jõesuus",
-    proj_roheline_desc:"Большой семейный день: спорт-зоны, творческие мастер-классы, настольные игры, ярмарка обмена вещами. Участие бесплатное; материалы предоставляет команда."
-  },
-  et:{
-    back_to_projects:"← Tagasi projektide juurde",
-    photos_title:"Fotod",
-    proj_roheline_title:"Roheline Start – perepäev Narva-Jõesuus",
-    proj_roheline_desc:"Suur perepäev pargis: spordialad, loovad töötoad, lauamängud ja asjade vahetuslaat. Osalemine tasuta; materjalid toob korraldustiim."
-  }
-};
-function applyI18n(){
-  const lang=localStorage.getItem('lang')||'ru';
-  document.documentElement.lang=lang;
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const k=el.getAttribute('data-i18n');
-    el.textContent=(DICT[lang]&&DICT[lang][k])||el.textContent;
-  });
-}
-applyI18n();
-</script>
-<script>
-// 1) Опиши наборы фотографий
-//   path: папка (относительно этой страницы)
-//   from..to: диапазон номеров (включительно). from может быть больше to.
-const sets = [
-  { path: "../assets/roheline-start-2/", from: 35, to: 20 },
-  { path: "../assets/roheline-start/",  from: 19, to: 1  }
-];
-
-// 2) Допустимые расширения (оставь "jpg" если все jpg)
-const exts = ["jpg","jpeg","png","webp"];
-
-// 3) Сгенерировать <img>
-const box = document.getElementById("gallery");
-for (const s of sets) {
-  const step = s.from >= s.to ? -1 : 1;
-  for (let n = s.from; step<0 ? n>=s.to : n<=s.to; n+=step) {
-    let el = document.createElement("img");
-    el.className = "rounded-lg img-card lb-gallery";
-    el.loading = "lazy";
-    el.decoding = "async";
-    el.alt = "";
-    // пробуем несколько расширений (первое подходящее загрузится)
-    el.src = s.path + n + ".jpg";
-    el.onerror = function tryNext() {
-      // по очереди пробуем другие расширения
-      const cur = exts.indexOf((this.src.split(".").pop()||"").toLowerCase());
-      for (let i=0;i<exts.length;i++){
-        const next = exts[(cur+1+i)%exts.length];
-        const candidate = s.path + n + "." + next;
-        if (candidate !== this.src) { this.onerror=null; this.src=candidate; break; }
+  <!-- I18N -->
+  <script>
+    const DICT = {
+      ru: {
+        back_to_projects: "← Назад к проектам",
+        photos_title: "Фотографии",
+        proj_roheline_title: "Roheline Start – perepäev Narva-Jõesuus",
+        proj_roheline_desc:
+          "Большой семейный день: спорт-зоны, творческие мастер-классы, настольные игры и ярмарка обмена вещами. Участие бесплатное; материалы предоставляет команда."
+      },
+      et: {
+        back_to_projects: "← Tagasi projektide juurde",
+        photos_title: "Fotod",
+        proj_roheline_title: "Roheline Start – perepäev Narva-Jõesuus",
+        proj_roheline_desc:
+          "Suur perepäev pargis: spordialad, loovad töötoad, lauamängud ja asjade vahetuslaat. Osalemine tasuta; materjalid toob korraldustiim."
       }
     };
-    box.appendChild(el);
-  }
-}
-</script>
 
-<script>
-/* lightbox как выше */
-const lb=document.getElementById('lightbox'),img=document.getElementById('lb-img');
-const prev=document.getElementById('lb-prev'),next=document.getElementById('lb-next');
-let list=[...document.querySelectorAll('img.lb-gallery')].map(i=>i.src),idx=0;
-function openL(src){idx=list.indexOf(src);if(idx<0)idx=0;img.src=list[idx];lb.classList.add('open')}
-document.body.addEventListener('click',e=>{if(e.target.matches('img.lb-gallery'))openL(e.target.src);if(e.target===lb)lb.classList.remove('open')});
-prev.onclick=()=>{idx=(idx-1+list.length)%list.length;img.src=list[idx]};
-next.onclick=()=>{idx=(idx+1)%list.length;img.src=list[idx]};
-document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowLeft')prev.onclick();if(e.key==='ArrowRight')next.onclick()});
-</script>
-</body></html>
+    (function applyI18n(){
+      const lang = localStorage.getItem('lang') || 'ru';
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const k = el.getAttribute('data-i18n');
+        if (DICT[lang] && DICT[lang][k]) el.textContent = DICT[lang][k];
+      });
+    })();
+  </script>
+
+  <!-- Генерация галереи по диапазонам -->
+  <script>
+    // Папки с фотографиями (относительно текущего файла /projects/roheline-start.html)
+    // Переименуйте свои папки без пробелов и поместите туда файлы по номерам.
+    // Пример: ../assets/roheline-start-2/35.jpg ... 20.jpg
+    //         ../assets/roheline-start/19.jpg ... 1.jpg
+    const sets = [
+      { path: "../assets/roheline-start-2/", from: 35, to: 20 },
+      { path: "../assets/roheline-start/",  from: 19, to: 1  }
+    ];
+
+    const exts = ["jpg","jpeg","png","webp"]; // допустимые расширения
+
+    (function buildGallery(){
+      const box = document.getElementById("gallery");
+
+      for (const s of sets) {
+        const step = s.from >= s.to ? -1 : 1;
+        for (let n = s.from; step<0 ? n>=s.to : n<=s.to; n += step) {
+          const img = document.createElement("img");
+          img.className = "rounded-lg img-card lb-gallery";
+          img.loading = "lazy";
+          img.decoding = "async";
+          img.alt = "";
+
+          // основной вариант
+          img.src = s.path + n + ".jpg";
+
+          // если не загрузилось — попробовать другие расширения
+          img.onerror = function tryNext(){
+            const currentExt = (this.src.split(".").pop() || "").toLowerCase();
+            const idx = exts.indexOf(currentExt);
+            for (let i=1; i<=exts.length; i++){
+              const candidate = s.path + n + "." + exts[(idx+i)%exts.length];
+              if (candidate !== this.src) { this.onerror=null; this.src=candidate; break; }
+            }
+          };
+
+          box.appendChild(img);
+        }
+      }
+    })();
+  </script>
+
+  <!-- Лайтбокс -->
+  <script>
+    const lb   = document.getElementById('lightbox');
+    const lbImg= document.getElementById('lb-img');
+    const prev = document.getElementById('lb-prev');
+    const next = document.getElementById('lb-next');
+
+    let list = [];
+    let idx  = 0;
+
+    function refreshList(){
+      list = [...document.querySelectorAll('img.lb-gallery')].map(i=>i.src);
+    }
+
+    function openL(src){
+      if (!list.length) refreshList();
+      idx = list.indexOf(src);
+      if (idx < 0) idx = 0;
+      lbImg.src = list[idx];
+      lb.classList.add('open');
+    }
+
+    document.body.addEventListener('click', e=>{
+      if (e.target.matches('img.lb-gallery')) openL(e.target.src);
+      if (e.target === lb || e.target.id === 'lb-close') lb.classList.remove('open');
+    });
+
+    prev.onclick = ()=>{ if(!list.length) return; idx=(idx-1+list.length)%list.length; lbImg.src=list[idx]; };
+    next.onclick = ()=>{ if(!list.length) return; idx=(idx+1)%list.length;       lbImg.src=list[idx]; };
+
+    document.addEventListener('keydown', e=>{
+      if(!lb.classList.contains('open')) return;
+      if(e.key === 'Escape')     lb.classList.remove('open');
+      if(e.key === 'ArrowLeft')  prev.onclick();
+      if(e.key === 'ArrowRight') next.onclick();
+    });
+  </script>
+</body>
+</html>
