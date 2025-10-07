@@ -81,7 +81,7 @@
       <a href="#about" class="hover:text-blue-600" data-i18n="nav_about">О нас</a>
       <a href="#projects" class="hover:text-blue-600" data-i18n="nav_projects">Реализованные проекты</a>
       <a href="#events" class="hover:text-blue-600" data-i18n="nav_events">События</a>
-      <a href="#gallery" class="hover:text-blue-600" data-i18n="nav_gallery">Галерея</a>
+      <a href="#team" class="hover:text-blue-600" data-i18n="nav_team">Команда</a>
       <a href="#partners" class="hover:text-blue-600" data-i18n="nav_partners">Наши партнёры</a>
       <a href="#contact" class="hover:text-blue-600" data-i18n="nav_contacts">Контакты</a>
     </nav>
@@ -179,15 +179,39 @@
   <ul id="events-list" class="mt-6 grid md:grid-cols-2 gap-6"></ul>
 </section>
 
-<section id="gallery" class="bg-white border-t">
+<section id="team" class="bg-white border-t">
   <div class="max-w-6xl mx-auto px-4 py-16">
-    <h2 class="text-3xl font-bold" data-i18n="gallery_title">Галерея</h2>
-    <div id="gallery-grid" class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3">
+    <h2 class="text-3xl font-bold" data-i18n="team_title">Команда</h2>
 
+    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Михаил -->
+      <div class="bg-gray-50 rounded-xl p-4 text-center">
+        <img src="assets/photo6.jpg" alt="Михаил Гладышев" class="w-full h-56 object-cover rounded-lg lb-single">
+        <h3 class="mt-3 font-semibold">Михаил Гладышев</h3>
+        <p class="text-sm text-gray-700">Руководитель и основатель. Стратегия, партнёрства, финансирование проектов.</p>
+      </div>
+      <!-- Евгений -->
+      <div class="bg-gray-50 rounded-xl p-4 text-center">
+        <img src="assets/photo6.jpg" alt="Евгений Чайкин" class="w-full h-56 object-cover rounded-lg lb-single">
+        <h3 class="mt-3 font-semibold">Евгений Чайкин</h3>
+        <p class="text-sm text-gray-700">Технический координатор событий. Логистика, оборудование, безопасность площадок.</p>
+      </div>
+      <!-- Александр -->
+      <div class="bg-gray-50 rounded-xl p-4 text-center">
+        <img src="assets/photo6.jpg" alt="Александр Егоров" class="w-full h-56 object-cover rounded-lg lb-single">
+        <h3 class="mt-3 font-semibold">Александр Егоров</h3>
+        <p class="text-sm text-gray-700">Координатор волонтёров и коммуникаций. Набор и сопровождение команды, соцсети.</p>
+      </div>
+      <!-- Никита -->
+      <div class="bg-gray-50 rounded-xl p-4 text-center">
+        <img src="assets/photo6.jpg" alt="Никита Сафронов" class="w-full h-56 object-cover rounded-lg lb-single">
+        <h3 class="mt-3 font-semibold">Никита Сафронов</h3>
+        <p class="text-sm text-gray-700">Продюсер программ и мастер-классов. Сетка активностей, работа с партнёрами.</p>
+      </div>
     </div>
-    <button id="open-gallery" class="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg no-print" data-i18n="gallery_open">Открыть галерею</button>
   </div>
 </section>
+
 
 <section id="partners" class="max-w-6xl mx-auto px-4 py-16">
   <h2 class="text-3xl font-bold" data-i18n="partners_title">Наши партнёры</h2>
@@ -272,7 +296,7 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
 // i18n dict
-const I18N={"ru":{"nav_about":"О нас","nav_projects":"Реализованные проекты","nav_events":"События","nav_gallery":"Галерея","nav_partners":"Наши партнёры","nav_contacts":"Контакты","hero_title":"Время молодых!","hero_sub":"Делаем Нарва‑Йыэсуу и Ида‑Вирумаа местом, где молодёжь остаётся, учится и создаёт события.","cta_events":"Ближайшие события","cta_volunteer":"Стать волонтёром","about_title":"О нас","about_intro":"MTÜ Noorteaeg — молодёжная организация из Нарва-Йыэсуу, созданная для того, чтобы молодые люди могли действовать, создавать проекты и менять среду вокруг себя.","about_mission":"Миссия","about_mission_txt":"Дать молодёжи возможность проявить себя, развиваться и влиять на жизнь города и региона.","about_goal":"Цель","about_goal_txt":"Сделать Нарва-Йыэсуу и весь регион местом, где молодёжь остаётся, учится и создаёт будущее.","about_do":"Что мы делаем","do_1":"Организуем городские праздники и семейные мероприятия","do_2":"Проводим мастер‑классы, лекции и эко‑инициативы","do_3":"Поддерживаем молодёжные идеи и проекты","do_4":"Сотрудничаем с городом, школами и партнёрами в Ида‑Вирумаа","do_5":"Организуем молодежные поездки по Эстонии и за границу","team":"Команда","team_txt":"MTÜ Noorteaeg основана молодым жителем Нарва-Йыэсуу Михаилом Гладышевым. Вместе с ним проекты развивают активные ребята, которые верят, что молодёжь может менять свой город к лучшему.","events_title":"Ближайшие события","gallery_title":"Галерея","gallery_open":"Открыть галерею","partners_title":"Партнёры","vol_title":"Стать волонтёром","vol_sub":"Заполни форму и мы ответим при первой возможности","vol_name":"Имя","vol_msg":"Сообщение","vol_send":"Отправить","contacts_title":"Контакты","phone":"Телефон:","find_us":"Ищи нас"},"et":{"nav_about":"Meist","nav_projects":"Teostatud projektid","nav_events":"Sündmused","nav_gallery":"Galerii","nav_partners":"Partnerid","nav_contacts":"Kontakt","hero_title":"Noorteaeg!","hero_sub":"Loome Narva‑Jõesuu ja Ida‑Viru noortele koha, kus õpitakse, tegutsetakse ja korraldatakse sündmusi.","cta_events":"Lähisündmused","cta_volunteer":"Tule vabatahtlikuks","about_title":"Meist","about_intro":"MTÜ Noorteaeg aitab noortel Narva‑Jõesuus tegutseda, projekte ellu viia ja oma ümbrust paremaks muuta.","about_mission":"Missioon","about_mission_txt":"Anda noortele võimalus väljenduda, areneda ja mõjutada linna elu.","about_goal":"Eesmärk","about_goal_txt":"Muuta Narva‑Jõesuu ja kogu piirkond kohaks, kuhu noored jäävad ja kus nad loovad tulevikku.","about_do":"Mida me teeme","do_1":"Korraldame linnapeo ja pereüritusi","do_2":"Viime läbi töötoad, loengud ja rohealgatused","do_3":"Toetame noorte ideid ja projekte","do_4":"Teeme koostööd linna, koolide ja partneritega Ida‑Virumaal","do_5":"Korraldame noortesõite Eestis ja välismaal","team":"Meeskond","team_txt":"MTÜ Noorteaeg asutas Narva‑Jõesuu noor Mikhail Gladyshev. Koos temaga arendavad projekte aktiivsed noored.","events_title":"Lähisündmused","gallery_title":"Galerii","gallery_open":"Ava galerii","partners_title":"Meie partnerid","vol_title":"Tule vabatahtlikuks","vol_sub":"Täida vorm ja vastame esimesel võimalusel","vol_name":"Nimi","vol_msg":"Sõnum","vol_send":"Saada","contacts_title":"Kontakt","phone":"Telefon:","find_us":"Leia meid"}};
+const I18N={"ru":{"nav_about":"О нас","nav_projects":"Реализованные проекты","nav_events":"События","nav_team":"Команда","team_title":"Команда","nav_partners":"Наши партнёры","nav_contacts":"Контакты","hero_title":"Время молодых!","hero_sub":"Делаем Нарва‑Йыэсуу и Ида‑Вирумаа местом, где молодёжь остаётся, учится и создаёт события.","cta_events":"Ближайшие события","cta_volunteer":"Стать волонтёром","about_title":"О нас","about_intro":"MTÜ Noorteaeg — молодёжная организация из Нарва-Йыэсуу, созданная для того, чтобы молодые люди могли действовать, создавать проекты и менять среду вокруг себя.","about_mission":"Миссия","about_mission_txt":"Дать молодёжи возможность проявить себя, развиваться и влиять на жизнь города и региона.","about_goal":"Цель","about_goal_txt":"Сделать Нарва-Йыэсуу и весь регион местом, где молодёжь остаётся, учится и создаёт будущее.","about_do":"Что мы делаем","do_1":"Организуем городские праздники и семейные мероприятия","do_2":"Проводим мастер‑классы, лекции и эко‑инициативы","do_3":"Поддерживаем молодёжные идеи и проекты","do_4":"Сотрудничаем с городом, школами и партнёрами в Ида‑Вирумаа","do_5":"Организуем молодежные поездки по Эстонии и за границу","team":"Команда","team_txt":"MTÜ Noorteaeg основана молодым жителем Нарва-Йыэсуу Михаилом Гладышевым. Вместе с ним проекты развивают активные ребята, которые верят, что молодёжь может менять свой город к лучшему.","events_title":"Ближайшие события","gallery_title":"Галерея","gallery_open":"Открыть галерею","partners_title":"Партнёры","vol_title":"Стать волонтёром","vol_sub":"Заполни форму и мы ответим при первой возможности","vol_name":"Имя","vol_msg":"Сообщение","vol_send":"Отправить","contacts_title":"Контакты","phone":"Телефон:","find_us":"Ищи нас"},"et":{"nav_about":"Meist","nav_projects":"Teostatud projektid","nav_events":"Sündmused","nav_team":"Meeskond","team_title":"Meeskond","nav_partners":"Partnerid","nav_contacts":"Kontakt","hero_title":"Noorteaeg!","hero_sub":"Loome Narva‑Jõesuu ja Ida‑Viru noortele koha, kus õpitakse, tegutsetakse ja korraldatakse sündmusi.","cta_events":"Lähisündmused","cta_volunteer":"Tule vabatahtlikuks","about_title":"Meist","about_intro":"MTÜ Noorteaeg aitab noortel Narva‑Jõesuus tegutseda, projekte ellu viia ja oma ümbrust paremaks muuta.","about_mission":"Missioon","about_mission_txt":"Anda noortele võimalus väljenduda, areneda ja mõjutada linna elu.","about_goal":"Eesmärk","about_goal_txt":"Muuta Narva‑Jõesuu ja kogu piirkond kohaks, kuhu noored jäävad ja kus nad loovad tulevikku.","about_do":"Mida me teeme","do_1":"Korraldame linnapeo ja pereüritusi","do_2":"Viime läbi töötoad, loengud ja rohealgatused","do_3":"Toetame noorte ideid ja projekte","do_4":"Teeme koostööd linna, koolide ja partneritega Ida‑Virumaal","do_5":"Korraldame noortesõite Eestis ja välismaal","team":"Meeskond","team_txt":"MTÜ Noorteaeg asutas Narva‑Jõesuu noor Mikhail Gladyshev. Koos temaga arendavad projekte aktiivsed noored.","events_title":"Lähisündmused","gallery_title":"Galerii","gallery_open":"Ava galerii","partners_title":"Meie partnerid","vol_title":"Tule vabatahtlikuks","vol_sub":"Täida vorm ja vastame esimesel võimalusel","vol_name":"Nimi","vol_msg":"Sõnum","vol_send":"Saada","contacts_title":"Kontakt","phone":"Telefon:","find_us":"Leia meid"}};
 function setLang(lang){const d=I18N[lang];document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(d[k]) el.textContent=d[k];});document.documentElement.lang=lang;document.getElementById('lang-ru').setAttribute('aria-pressed',lang==='ru');document.getElementById('lang-et').setAttribute('aria-pressed',lang==='et');localStorage.setItem('lang',lang);renderEvents();}
 document.getElementById('lang-ru').onclick=()=>setLang('ru');document.getElementById('lang-et').onclick=()=>setLang('et');setLang(localStorage.getItem('lang')||'ru');
 
@@ -286,9 +310,6 @@ function openLightbox(src, group){if(group==='gallery'){gallery=[...document.que
 function show(i){idx=(i+gallery.length)%gallery.length;lbImg.src=gallery[idx];}
 document.body.addEventListener('click',e=>{const t=e.target;if(t.matches('img.lb-gallery')) openLightbox(t.src,'gallery'); if(t.matches('img.lb-single')) openLightbox(t.src,'single');});
 document.getElementById('lb-close')?.addEventListener('click',()=>lb.classList.remove('open'));prevBtn.addEventListener('click',()=>show(idx-1));nextBtn.addEventListener('click',()=>show(idx+1));lb.addEventListener('click',e=>{if(e.target===lb) lb.classList.remove('open');});document.addEventListener('keydown',e=>{if(!lb.classList.contains('open')) return; if(e.key==='Escape') lb.classList.remove('open'); if(e.key==='ArrowLeft') show(idx-1); if(e.key==='ArrowRight') show(idx+1);});
-
-// Gallery lazy open
-const moreImages=['assets/photo7.jpg','assets/photo8.jpg'];document.getElementById('open-gallery').addEventListener('click',()=>{const grid=document.getElementById('gallery-grid');moreImages.forEach(src=>{const img=document.createElement('img');img.src=src;img.className='rounded-xl img-card w-full lb-gallery';img.style.display='none';grid.appendChild(img);});const first=document.querySelector('img.lb-gallery');if(first){first.click();}});
 
 // Formspree
 const FORMSPREE_ENDPOINT="https://formspree.io/f/mldplwgg";document.getElementById('vol-form').addEventListener('submit',async(ev)=>{ev.preventDefault();const form=ev.target, st=document.getElementById('vol-status');st.textContent=(document.documentElement.lang==='et')?'Saadan…':'Отправляем…';try{const r=await fetch(FORMSPREE_ENDPOINT,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(form)});if(r.ok){form.reset();st.textContent=(document.documentElement.lang==='et')?'Aitäh! Sõnum saadetud.':'Спасибо! Сообщение отправлено.';st.className='text-sm mt-2 text-green-700';}else{st.textContent=(document.documentElement.lang==='et')?'Viga saatmisel.':'Ошибка отправки.';st.className='text-sm mt-2 text-red-700';}}catch(e){st.textContent='Network error';st.className='text-sm mt-2 text-red-700';}});
