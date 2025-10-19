@@ -147,6 +147,7 @@ function applyI18n() {
     const k = el.getAttribute('data-i18n');
     if (DICT[lang] && DICT[lang][k]) {
       el.innerHTML = DICT[lang][k];
+          }
   });
 }
 applyI18n();
