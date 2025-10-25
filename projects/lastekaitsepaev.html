@@ -39,6 +39,13 @@
       <img src="../assets/noorteaeg_logo_new.png" alt="Noorteaeg logo" class="w-10 h-10"><span class="font-semibold">MTÜ Noorteaeg</span>
     </a>
     </div>
+
+      <div class="flex items-center gap-2">
+      <button id="lang-ru" class="px-2 py-1 rounded border text-xs" aria-pressed="true">RU</button>
+      <button id="lang-et" class="px-2 py-1 rounded border text-xs" aria-pressed="false">ET</button>
+      <button id="lang-en" class="px-2 py-1 rounded border text-xs" aria-pressed="false">EN</button>
+    </div>
+    
   </header>
 
   <!-- Контент -->
@@ -411,5 +418,28 @@ All activities were free and open to everyone.
       if (e.key === 'ArrowRight')  next.onclick();
     });
   </script>
+
+<script>
+function setLang(lang){
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang;
+  ['ru','et','en'].forEach(l=>{
+    const b = document.getElementById('lang-'+l);
+    if (b) b.setAttribute('aria-pressed', String(l===lang));
+  });
+  applyI18n();
+}
+
+// навешиваем обработчики
+['ru','et','en'].forEach(l=>{
+  const b = document.getElementById('lang-'+l);
+  if (b) b.onclick = ()=>setLang(l);
+});
+
+// применяем язык при загрузке
+setLang(localStorage.getItem('lang') || 'ru');
+</script>
+
+  
 </body>
 </html>
