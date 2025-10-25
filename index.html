@@ -333,7 +333,7 @@ function setLang(lang){const d=I18N[lang];document.querySelectorAll('[data-i18n]
 document.getElementById('lang-ru').onclick=()=>setLang('ru');document.getElementById('lang-et').onclick=()=>setLang('et');document.getElementById('lang-et').onclick=()=>setLang('en');setLang(localStorage.getItem('lang')||'ru');
 
 // Events: show titles without prefixed dates
-async function renderEvents(){try{const r=await fetch('events.json');const data=await r.json();const list=document.getElementById('events-list');list.innerHTML='';const lang=document.documentElement.lang||'ru';data.upcoming.forEach(e=>{const t=(lang==='et')?e.title_et:e.title_ru;const li=document.createElement('li');li.className='p-4 bg-white rounded-xl shadow';li.innerHTML=`<h3 class='font-semibold mb-3'>${t}</h3><img src='${e.poster}' class='poster rounded-md lb-single' alt='poster'>`;list.appendChild(li);});}catch(e){console.error(e);}}
+async function renderEvents(){try{const r=await fetch('events.json');const data=await r.json();const list=document.getElementById('events-list');list.innerHTML='';const lang=document.documentElement.lang||'ru';data.upcoming.forEach(e=>{const t = lang==='et' ? e.title_et : lang==='en' ? e.title_en : e.title_ru;const li=document.createElement('li');li.className='p-4 bg-white rounded-xl shadow';li.innerHTML=`<h3 class='font-semibold mb-3'>${t}</h3><img src='${e.poster}' class='poster rounded-md lb-single' alt='poster'>`;list.appendChild(li);});}catch(e){console.error(e);}}
 renderEvents();
 
 // Lightbox: gallery images scroll, single images no-scroll
