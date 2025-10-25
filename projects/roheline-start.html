@@ -208,4 +208,26 @@ prev.onclick=()=>{idx=(idx-1+list.length)%list.length;img.src=list[idx]};
 next.onclick=()=>{idx=(idx+1)%list.length;img.src=list[idx]};
 document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowLeft')prev.onclick();if(e.key==='ArrowRight')next.onclick()});
 </script>
+  
+<script>
+function setLang(lang){
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang;
+  ['ru','et','en'].forEach(l=>{
+    const b = document.getElementById('lang-'+l);
+    if (b) b.setAttribute('aria-pressed', String(l===lang));
+  });
+  applyI18n();
+}
+
+// навешиваем обработчики
+['ru','et','en'].forEach(l=>{
+  const b = document.getElementById('lang-'+l);
+  if (b) b.onclick = ()=>setLang(l);
+});
+
+// применяем язык при загрузке
+setLang(localStorage.getItem('lang') || 'ru');
+</script>
+
 </body></html>
