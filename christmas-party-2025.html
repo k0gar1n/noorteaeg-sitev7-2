@@ -10,71 +10,84 @@
 </head>
 <body class="bg-gray-50 text-gray-900">
 
-<header class="border-b bg-white">
-  <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+<header class="border-b bg-white/90 backdrop-blur">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
     <a href="../index.html" class="flex items-center gap-3">
       <img src="../assets/noorteaeg_logo_new.png" alt="Noorteaeg logo" class="w-10 h-10">
       <span class="font-semibold">MTÜ Noorteaeg</span>
     </a>
-    <a href="../index.html#events" class="text-sm text-blue-600 hover:underline">
-      ← Назад к ближайшим событиям
-    </a>
+
+    <div class="flex items-center gap-4">
+      <a href="../index.html#events"
+         class="text-xs sm:text-sm text-blue-600 hover:underline"
+         data-i18n="back">
+        ← Назад к ближайшим событиям
+      </a>
+      <div class="flex items-center gap-2 text-xs">
+        <button id="lang-ru" class="px-2 py-1 rounded border" aria-pressed="true">RU</button>
+        <button id="lang-et" class="px-2 py-1 rounded border" aria-pressed="false">ET</button>
+        <button id="lang-en" class="px-2 py-1 rounded border" aria-pressed="false">EN</button>
+      </div>
+    </div>
   </div>
 </header>
 
 <main class="max-w-4xl mx-auto px-4 py-10 space-y-10">
 
-  <!-- Обложка -->
-  <section class="bg-white rounded-2xl shadow overflow-hidden">
-    <img src="../assets/event-christmas.png" alt="Рождественский праздник" class="w-full h-72 object-cover">
-    <div class="p-6">
-      <p class="text-xs text-gray-500 mb-2">
+  <!-- Обложка + вертикальная афиша -->
+  <section class="bg-white rounded-2xl shadow p-6 flex flex-col md:flex-row gap-6">
+    <!-- Вертикальный постер -->
+    <div class="md:w-1/3 flex justify-center">
+      <img src="../assets/christmas_poster.jpg"
+           alt="Rõõmus jõulupidu"
+           class="w-full max-w-xs rounded-xl shadow-md object-cover">
+    </div>
+
+    <!-- Текстовая часть -->
+    <div class="md:w-2/3 space-y-3">
+      <p class="text-xs text-gray-500" data-i18n="meta">
         20 декабря 2025 · 15:00–19:00 · Площадка у школы Narva-Jõesuu
       </p>
-      <h1 class="text-3xl font-bold mb-3">
+      <h1 class="text-3xl font-bold" data-i18n="title">
         Рождественский семейный праздник в Нарва-Йыэсуу
       </h1>
-      <p class="text-gray-700">
+      <p class="text-gray-700" data-i18n="lead">
         Тёплый семейный праздник на свежем воздухе с аттракционами, творческими мастер-классами,
         DJ, огненным шоу и рождественской лотереей для гостей, которые придут в праздничных колпаках.
       </p>
     </div>
   </section>
 
-  <!-- Программа (RU) -->
+  <!-- Программа -->
   <section class="bg-white rounded-2xl shadow p-6">
-    <h2 class="text-2xl font-semibold mb-4">Программа (предварительная)</h2>
+    <h2 class="text-2xl font-semibold mb-4" data-i18n="programme_heading">
+      Программа (предварительная)
+    </h2>
     <ul class="list-disc pl-5 space-y-1 text-gray-800">
-      <li>15:00 – Открытие праздника, музыка и приветствие гостей</li>
-      <li>15:15–17:30 – Батуты и игровые зоны для детей</li>
-      <li>15:30–18:00 – Творческие мастер-классы и эко-уголок</li>
-      <li>17:00 – Выступление приглашённой музыкальной группы</li>
-      <li>18:00 – Огненное шоу</li>
-      <li>18:30 – Рождественская лотерея среди гостей в колпаках</li>
-      <li>19:00 – Завершение праздника</li>
+      <li data-i18n="prog_1">15:00 – Открытие праздника, музыка и приветствие гостей</li>
+      <li data-i18n="prog_2">15:15–17:30 – Батуты и игровые зоны для детей</li>
+      <li data-i18n="prog_3">15:30–18:00 – Творческие мастер-классы и эко-уголок</li>
+      <li data-i18n="prog_4">17:00 – Выступление приглашённой музыкальной группы</li>
+      <li data-i18n="prog_5">18:00 – Огненное шоу</li>
+      <li data-i18n="prog_6">18:30 – Рождественская лотерея среди гостей в колпаках</li>
+      <li data-i18n="prog_7">19:00 – Завершение праздника</li>
     </ul>
-    <p class="mt-4 text-sm text-gray-600">
+    <p class="mt-4 text-sm text-gray-600" data-i18n="note">
       Участие в мероприятии бесплатное. Программа может немного меняться, следите за обновлениями в наших соцсетях.
     </p>
   </section>
 
-  <!-- Lühike kirjeldus eesti keeles -->
+  <!-- Блок с практической инфой -->
   <section class="bg-white rounded-2xl shadow p-6">
-    <h2 class="text-2xl font-semibold mb-3">Lühikirjeldus eesti keeles</h2>
-    <p class="text-gray-800">
-      20. detsembril toimub Narva-Jõesuu kooli juures jõuluperepäev, kus peresid ootavad batuudid,
-      töötoad, DJ, tulešõu ja jõululoos nendele, kes tulevad jõulumütsis. Üritus on kõigile tasuta.
-    </p>
-  </section>
-
-  <!-- Short description in English -->
-  <section class="bg-white rounded-2xl shadow p-6">
-    <h2 class="text-2xl font-semibold mb-3">Short description in English</h2>
-    <p class="text-gray-800">
-      On 20 December a Christmas Family Day will take place next to Narva-Jõesuu school:
-      attractions, creative workshops, a DJ, a fire show and a Christmas lottery for guests
-      wearing Christmas hats. Participation is free of charge.
-    </p>
+    <h2 class="text-2xl font-semibold mb-3" data-i18n="practical_title">
+      Практическая информация
+    </h2>
+    <ul class="list-disc pl-5 space-y-1 text-gray-800">
+      <li data-i18n="practical_1">Мероприятие подойдёт для семей с детьми всех возрастов.</li>
+      <li data-i18n="practical_2">Тёплая одежда и удобная обувь очень приветствуются.</li>
+      <li data-i18n="practical_3">Приходите в рождественском колпаке — так вы участвуете в лотерее.</li>
+      <li data-i18n="practical_4">Участие бесплатное, часть активностей может быть с ограниченным количеством мест.</li>
+    </ul>
   </section>
 
 </main>
@@ -82,13 +95,60 @@
 <footer class="border-t bg-gray-50">
   <div class="max-w-4xl mx-auto px-4 py-6 text-sm text-gray-600 flex justify-between">
     <span>© <span id="year"></span> MTÜ Noorteaeg</span>
-    <a href="../index.html" class="hover:underline">На главную</a>
+    <a href="../index.html" class="hover:underline" data-i18n="footer_home">На главную</a>
   </div>
 </footer>
 
 <script>
+  // Год в подвале
   document.getElementById('year').textContent = new Date().getFullYear();
-</script>
 
-</body>
-</html>
+  // Словарь переводов только для этой страницы
+  const I18N = {
+    ru: {
+      back: "← Назад к ближайшим событиям",
+      meta: "20 декабря 2025 · 15:00–19:00 · Площадка у школы Narva-Jõesuu",
+      title: "Рождественский семейный праздник в Нарва-Йыэсуу",
+      lead: "Тёплый семейный праздник на свежем воздухе с аттракционами, творческими мастер-классами, DJ, огненным шоу и рождественской лотереей для гостей, которые придут в праздничных колпаках.",
+      programme_heading: "Программа (предварительная)",
+      prog_1: "15:00 – Открытие праздника, музыка и приветствие гостей",
+      prog_2: "15:15–17:30 – Батуты и игровые зоны для детей",
+      prog_3: "15:30–18:00 – Творческие мастер-классы и эко-уголок",
+      prog_4: "17:00 – Выступление приглашённой музыкальной группы",
+      prog_5: "18:00 – Огненное шоу",
+      prog_6: "18:30 – Рождественская лотерея среди гостей в колпаках",
+      prog_7: "19:00 – Завершение праздника",
+      note: "Участие в мероприятии бесплатное. Программа может немного меняться, следите за обновлениями в наших соцсетях.",
+      practical_title: "Практическая информация",
+      practical_1: "Мероприятие подойдёт для семей с детьми всех возрастов.",
+      practical_2: "Тёплая одежда и удобная обувь очень приветствуются.",
+      practical_3: "Приходите в рождественском колпаке — так вы участвуете в лотерее.",
+      practical_4: "Участие бесплатное, часть активностей может быть с ограниченным количеством мест.",
+      footer_home: "На главную"
+    },
+    et: {
+      back: "← Tagasi sündmuste juurde",
+      meta: "20. detsember 2025 · 15.00–19.00 · Narva-Jõesuu kooli esine plats",
+      title: "Jõuluperepäev Narva-Jõesuus",
+      lead: "Soe pereüritus värskes õhus: batuudid, loomingulised töötoad, DJ, tulešõu ja jõululoos kõigile, kes tulevad jõulumütsiga.",
+      programme_heading: "Kava (esialgne)",
+      prog_1: "15.00 – Ürituse avamine, muusika ja külaliste tervitus",
+      prog_2: "15.15–17.30 – Batuudid ja mängualad lastele",
+      prog_3: "15.30–18.00 – Loomingulised töötoad ja rohenurk",
+      prog_4: "17.00 – Kutsutud muusikalise külalise etteaste",
+      prog_5: "18.00 – Tulešõu",
+      prog_6: "18.30 – Jõululoos jõulumütsiga külalistele",
+      prog_7: "19.00 – Ürituse lõpetamine",
+      note: "Osalemine on tasuta. Kava võib veidi muutuda, hoia silm peal meie sotsiaalmeedial.",
+      practical_title: "Praktiline info",
+      practical_1: "Üritus sobib peredele lastega igas vanuses.",
+      practical_2: "Soe riietus ja mugavad jalanõud on väga soovitatavad.",
+      practical_3: "Tule jõulumütsiga – nii osaled loosimises.",
+      practical_4: "Osalemine on tasuta, osa tegevustest võib olla piiratud kohtade arvuga.",
+      footer_home: "Avalehele"
+    },
+    en: {
+      back: "← Back to upcoming events",
+      meta: "20 December 2025 · 15:00–19:00 · Area next to Narva-Jõesuu school",
+      title: "Christmas Family Day in Narva-Jõesuu",
+      lead:
