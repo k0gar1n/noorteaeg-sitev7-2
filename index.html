@@ -41,31 +41,29 @@
 {
   "@context":"https://schema.org",
   "@type":"Event",
-  "name":"Осенний семейный день в Нарва-Йыэсуу",
-    "logo": "https://noorteaeg.ee/assets/noorteaeg_logo_new.png",
-    "image": "https://noorteaeg.ee/assets/noorteaeg_logo_new.png",
-  "startDate":"2025-10-12",
+  "name":"Рождественский праздник в Нарва-Йыэсуу",
+  "logo":"https://noorteaeg.ee/assets/noorteaeg_logo_new.png",
+  "image":"https://noorteaeg.ee/assets/noorteaeg_logo_new.png",
+  "startDate":"2025-12-20T15:00:00+02:00",
   "eventStatus":"https://schema.org/EventScheduled",
   "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
-  "location":{"@type":"Place","name":"Narva-Jõesuu","address":{"@type":"PostalAddress","addressLocality":"Narva-Jõesuu","addressCountry":"EE"}},
-  "organizer":{"@type":"Organization","name":"MTÜ Noorteaeg","url":"https://noorteaeg.ee"}
+  "location":{
+    "@type":"Place",
+    "name":"Narva-Jõesuu Hele park",
+    "address":{
+      "@type":"PostalAddress",
+      "addressLocality":"Narva-Jõesuu",
+      "addressCountry":"EE"
+    }
+  },
+  "organizer":{
+    "@type":"Organization",
+    "name":"MTÜ Noorteaeg",
+    "url":"https://noorteaeg.ee"
+  }
 }
 </script>
 
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Event",
-  "name":"Осенний семейный день в Синимяэ",
-    "logo": "https://noorteaeg.ee/assets/noorteaeg_logo_new.png",
-    "image": "https://noorteaeg.ee/assets/noorteaeg_logo_new.png",
-  "startDate":"2025-10-18",
-  "eventStatus":"https://schema.org/EventScheduled",
-  "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
-  "location":{"@type":"Place","name":"Sinimäe","address":{"@type":"PostalAddress","addressLocality":"Sinimäe","addressCountry":"EE"}},
-  "organizer":{"@type":"Organization","name":"MTÜ Noorteaeg","url":"https://noorteaeg.ee"}
-}
-</script>
 
 </head><body class="bg-gray-50 text-gray-900">
   <!-- Google tag (gtag.js) -->
@@ -340,9 +338,47 @@ const I18N={"ru":{"nav_about":"О нас","nav_projects":"Реализованн
 function setLang(lang){const d=I18N[lang];document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(d[k]) el.textContent=d[k];});document.documentElement.lang=lang;document.getElementById('lang-ru').setAttribute('aria-pressed',lang==='ru');document.getElementById('lang-et').setAttribute('aria-pressed',lang==='et');document.getElementById('lang-en').setAttribute('aria-pressed',lang==='en');localStorage.setItem('lang',lang);renderEvents();}
 document.getElementById('lang-ru').onclick=()=>setLang('ru');document.getElementById('lang-et').onclick=()=>setLang('et');document.getElementById('lang-en').onclick=()=>setLang('en');setLang(localStorage.getItem('lang')||'ru');
 
-// Events: show titles without prefixed dates
-async function renderEvents(){try{const r=await fetch('events.json');const data=await r.json();const list=document.getElementById('events-list');list.innerHTML='';const lang=document.documentElement.lang||'ru';data.upcoming.forEach(e=>{const t = lang==='et' ? e.title_et : lang==='en' ? e.title_en : e.title_ru;const li=document.createElement('li');li.className='p-4 bg-white rounded-xl shadow';li.innerHTML=`<h3 class='font-semibold mb-3'>${t}</h3><img src='${e.poster}' class='poster rounded-md lb-single' alt='poster'>`;list.appendChild(li);});}catch(e){console.error(e);}}
+// Events: show titles with link to event page
+async function renderEvents(){
+  try {
+    const r = await fetch('events.json');
+    const data = await r.json();
+    const list = document.getElementById('events-list');
+    list.innerHTML = '';
+    const lang = document.documentElement.lang || 'ru';
+
+    data.upcoming.forEach(e => {
+      const t =
+        lang === 'et'
+          ? e.title_et
+          : lang === 'en'
+          ? e.title_en
+          : e.title_ru;
+
+      const li = document.createElement('li');
+      li.className = 'bg-white rounded-xl shadow overflow-hidden';
+
+      const url = e.url || '#';
+
+      li.innerHTML = `
+        <a href="${url}" class="block hover:shadow-lg transition">
+          <img src="${e.poster}" class="w-full h-56 object-cover poster" alt="poster">
+          <div class="p-4">
+            <p class="text-xs text-gray-500 mb-1">${e.date || ''}</p>
+            <h3 class="font-semibold mb-1">${t}</h3>
+            <p class="text-sm text-gray-700">${e.short_ru || ''}</p>
+          </div>
+        </a>
+      `;
+
+      list.appendChild(li);
+    });
+  } catch (e) {
+    console.error(e);
+  }
+}
 renderEvents();
+
 
 // Lightbox: gallery images scroll, single images no-scroll
 const lb=document.getElementById('lightbox'), lbImg=document.getElementById('lb-img'), prevBtn=document.getElementById('lb-prev'), nextBtn=document.getElementById('lb-next');let gallery=[],idx=0;
