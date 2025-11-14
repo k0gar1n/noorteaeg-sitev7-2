@@ -362,7 +362,10 @@ async function renderEvents(){
 
       li.innerHTML = `
         <a href="${url}" class="block hover:shadow-lg transition">
-          <img src="${e.poster}" class="w-full h-56 object-cover poster" alt="poster">
+   <img src="${e.poster}"
+     class="w-full max-w-xs mx-auto aspect-[3/4] object-cover rounded-xl poster"
+     alt="poster">
+
           <div class="p-4">
             <p class="text-xs text-gray-500 mb-1">${e.date || ''}</p>
             <h3 class="font-semibold mb-1">${t}</h3>
