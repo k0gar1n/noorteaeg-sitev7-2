@@ -161,4 +161,58 @@
       back: "← Back to upcoming events",
       meta: "20 December 2025 · 15:00–19:00 · Area next to Narva-Jõesuu school",
       title: "Christmas Family Day in Narva-Jõesuu",
-      lead:
+      lead: "A warm outdoor family event with attractions, creative workshops, a DJ, a fire show and a Christmas lottery for guests wearing Christmas hats.",
+      programme_heading: "Programme (preliminary)",
+      prog_1: "15:00 – Opening of the event, music and welcome",
+      prog_2: "15:15–17:30 – Bouncy castles and play areas for children",
+      prog_3: "15:30–18:00 – Creative workshops and eco corner",
+      prog_4: "17:00 – Performance of a guest music group",
+      prog_5: "18:00 – Fire show",
+      prog_6: "18:30 – Christmas lottery for guests with Christmas hats",
+      prog_7: "19:00 – End of the event",
+      note: "Participation is free of charge. The programme might slightly change, please follow our social media for updates.",
+      practical_title: "Practical information",
+      practical_1: "The event is suitable for families with children of all ages.",
+      practical_2: "Warm clothes and comfortable shoes are highly recommended.",
+      practical_3: "Come in a Christmas hat to take part in the lottery.",
+      practical_4: "Participation is free, some activities may have limited capacity.",
+      footer_home: "Home page"
+    }
+  };
+
+  function setLang(lang) {
+    const dict = I18N[lang] || I18N.ru;
+
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const key = el.getAttribute("data-i18n");
+      if (dict[key]) {
+        el.textContent = dict[key];
+      }
+    });
+
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll("#lang-ru, #lang-et, #lang-en").forEach(btn => {
+      btn.setAttribute("aria-pressed", "false");
+      btn.classList.remove("bg-blue-600", "text-white");
+    });
+
+    const activeBtn = document.getElementById("lang-" + lang);
+    if (activeBtn) {
+      activeBtn.setAttribute("aria-pressed", "true");
+      activeBtn.classList.add("bg-blue-600", "text-white");
+    }
+
+    localStorage.setItem("event_lang", lang);
+  }
+
+  document.getElementById("lang-ru").onclick = () => setLang("ru");
+  document.getElementById("lang-et").onclick = () => setLang("et");
+  document.getElementById("lang-en").onclick = () => setLang("en");
+
+  // Язык по умолчанию (с учётом сохранённого выбора)
+  setLang(localStorage.getItem("event_lang") || "ru");
+</script>
+
+</body>
+</html>
