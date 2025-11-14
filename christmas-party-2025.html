@@ -1,34 +1,44 @@
-<!doctype html>
-<html lang="ru">
-<head>
-  <meta charset="utf-8">
-  <title>Рождественский семейный праздник – MTÜ Noorteaeg</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/png" href="../assets/noorteaeg_logo_new.png">
-  <script src="https://cdn.tailwindcss.com"></script>
+<!doctype html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roheline Start — MTÜ Noorteaeg</title>
   <link rel="stylesheet" href="../assets/site.css">
-</head>
-<body class="bg-gray-50 text-gray-900">
+  <link rel="icon" type="image/png" href="../assets/noorteaeg_logo_new.png">
+  <link rel="apple-touch-icon" href="../assets/noorteaeg_logo_new.png">
+<script src="https://cdn.tailwindcss.com"></script>
+</head><body class="bg-gray-50 text-gray-900">
 
-<header class="border-b bg-white/90 backdrop-blur">
-  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+  <link rel="icon" href="/favicon.png" sizes="64x64" type="image/png">
+<link rel="shortcut icon" href="/favicon.png" type="image/png">
+<meta property="og:site_name" content="MTÜ Noorteaeg">
+<meta property="og:image" content="https://noorteaeg.ee/assets/noorteaeg_logo_new.png">
+<meta name="twitter:image" content="https://noorteaeg.ee/assets/noorteaeg_logo_new.png">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W9RRMJFP0N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W9RRMJFP0N');
+</script>
+<style>
+  .preline { white-space: pre-line; }  /* показывает переносы \n как новые строки */
+</style>
+<header class="border-b bg-white">
+  <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="../index.html#projects" class="text-blue-600" data-i18n="back_to_projects">← Назад к проектам</a>
+    
     <a href="../index.html" class="flex items-center gap-3">
-      <img src="../assets/noorteaeg_logo_new.png" alt="Noorteaeg logo" class="w-10 h-10">
-      <span class="font-semibold">MTÜ Noorteaeg</span>
+      <img src="../assets/noorteaeg_logo_new.png" alt="Noorteaeg logo" class="w-10 h-10"><span class="font-semibold">MTÜ Noorteaeg</span>
     </a>
-
-    <div class="flex items-center gap-4">
-      <a href="../index.html#events"
-         class="text-xs sm:text-sm text-blue-600 hover:underline"
-         data-i18n="back">
-        ← Назад к ближайшим событиям
-      </a>
-      <div class="flex items-center gap-2 text-xs">
-        <button id="lang-ru" class="px-2 py-1 rounded border" aria-pressed="true">RU</button>
-        <button id="lang-et" class="px-2 py-1 rounded border" aria-pressed="false">ET</button>
-        <button id="lang-en" class="px-2 py-1 rounded border" aria-pressed="false">EN</button>
-      </div>
+    
+    <div class="flex items-center gap-2">
+      <button id="lang-ru" class="px-2 py-1 rounded border text-xs" aria-pressed="true">RU</button>
+      <button id="lang-et" class="px-2 py-1 rounded border text-xs" aria-pressed="false">ET</button>
+      <button id="lang-en" class="px-2 py-1 rounded border text-xs" aria-pressed="false">EN</button>
     </div>
+  
   </div>
 </header>
 
