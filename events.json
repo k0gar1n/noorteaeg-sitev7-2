@@ -1,16 +1,17 @@
 {
   "upcoming": [
     {
-      "date": "2025-10-12",
-      "title_ru": "Осенний семейный день в Нарва-Йыэсуу",
-      "title_et": "Sügisene perepäev Narva‑Jõesuus",
-      "poster": "assets/poster_narva_12oct.png"
-    },
-    {
-      "date": "2025-10-18",
-      "title_ru": "Осенний семейный день в Синимяэ",
-      "title_et": "Sügisene perepäev Sinimäel",
-      "poster": "assets/poster_sinimae_18oct.png"
+      "id": "christmas-party-2025",
+      "date": "20.12.2025, 15:00",
+      "title_ru": "Рождественский праздник в Нарва-Йыэсуу",
+      "title_et": "Jõulupüha Narva-Jõesuus",
+      "title_en": "Christmas in Narva-Jõesuu",
+      "short_ru": "Тёплый семейный праздник у школы: аттракционы, мастер-классы, DJ, огненное шоу и рождественская лотерея.",
+      "short_et": "Soe perepäev kooli juures: batuudid, töötoad, DJ, tulešõu ja jõululoos.",
+      "short_en": "Warm family event next to the school: attractions, workshops, DJ, fire show and Christmas lottery.",
+      "poster": "assets/christmas_poster.jpg",
+      "url": "events/christmas-party-2025.html"
     }
-  ]
+  ],
+  "past": []
 }
