@@ -24,7 +24,13 @@
 </script>
 <style>
   .preline { white-space: pre-line; }  /* показывает переносы \n как новые строки */
+
+  /* Оверлей для полноэкранного постера (на всякий случай дублируем поведение Tailwind-классов) */
+  #poster-overlay {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
 </style>
+
 <header class="border-b bg-white">
   <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
     <a href="../index.html#events" class="text-blue-600" data-i18n="back">← Назад к ближайшим событиям</a>
@@ -217,7 +223,38 @@
 
   // Язык по умолчанию (с учётом сохранённого выбора)
   setLang(localStorage.getItem("event_lang") || "ru");
+    // Полноэкранный просмотр постера
+  const poster = document.getElementById("poster");
+  const overlay = document.getElementById("poster-overlay");
+  const overlayImg = document.getElementById("poster-overlay-img");
+
+  if (poster && overlay && overlayImg) {
+    poster.addEventListener("click", () => {
+      overlay.classList.remove("hidden");
+    });
+
+    // Закрытие по клику по фону или по самому изображению
+    overlay.addEventListener("click", () => {
+      overlay.classList.add("hidden");
+    });
+
+    // Дополнительно закрытие по Esc
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        overlay.classList.add("hidden");
+      }
+    });
+  }
+
 </script>
+<div id="poster-overlay" class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 hidden">
+  <img
+    id="poster-overlay-img"
+    src="../assets/event-christmas.png"
+    alt="Rõõmus jõulupidu"
+    class="max-h-[95vh] max-w-[95vw] object-contain rounded-xl shadow-lg"
+  >
+</div>
 
 </body>
 </html>
